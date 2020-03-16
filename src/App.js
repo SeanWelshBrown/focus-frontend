@@ -62,14 +62,15 @@ const App = (props) => {
             <NavBar />
           </div>
           <div className="content-div">
-
+          <Route render={({ location }) => (
             <TransitionGroup>
             <CSSTransition
+              key={location.key}
               timeout={300}
               classNames='fade'
             >
 
-              <Switch>
+              <Switch location={ location }>
 
                 <Route path="/" exact render={ HomePage } />
 
@@ -88,10 +89,10 @@ const App = (props) => {
                 <Route path="*" render={ NotFound } />
                 
               </Switch>
-              
+
             </CSSTransition>
             </TransitionGroup>
-
+          )}/>
           </div>
 
         </div>
