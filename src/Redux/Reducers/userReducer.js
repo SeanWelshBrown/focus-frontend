@@ -18,6 +18,9 @@ const userReducer = (state = initialState, action) => {
         token: action.payload.token
       }
 
+    case "CLEAR_USER":
+      return initialState
+
     default:
       return state
 

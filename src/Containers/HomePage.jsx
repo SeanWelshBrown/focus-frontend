@@ -4,7 +4,8 @@ const HomePage = props => {
 
   return (
     <div>
-      Home Page
+      <h1>This Page</h1>
+      <p>This is a test of me typing out this new font.</p>
     </div>
   )
 

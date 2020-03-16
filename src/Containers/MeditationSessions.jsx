@@ -4,7 +4,7 @@ const MeditationSessions = props => {
 
   return (
     <div>
-      Meditation Sessions
+      <h1>Meditation Sessions</h1>
     </div>
   )
 

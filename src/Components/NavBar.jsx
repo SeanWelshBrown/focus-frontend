@@ -1,13 +1,26 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 const NavBar = props => {
 
+  // REDUX
+  const dispatch = useDispatch();
+  const user = useSelector( state => state.user )
+  
+
+  // sends an action to clear the current user and token from state when "Log out" is selected from the NavBar
+  const handleLogOut = () => {
+    dispatch({
+      type: "CLEAR_USER",
+    })
+    localStorage.clear()
+  }
+
   // conditionally renders either login/register links or a profile page and log out link based off of a user being logged in or not
   const conditionalRenderForLogin = () => {
-    if (props.user.id === 0) {
+    if (user.id === 0) {
       return (
         <>
           <li>
@@ -22,10 +35,10 @@ const NavBar = props => {
       return (
         <>
           <li>
-          <NavLink to="/profile">Profile</NavLink>
+            <NavLink to="/profile">Profile</NavLink>
           </li>
           <li>
-            <NavLink to="/logout">Log out</NavLink>
+            <NavLink to="/" onClick={handleLogOut}>Log out</NavLink>
           </li>
         </>
       )
@@ -39,8 +52,8 @@ const NavBar = props => {
     if (currentPage === "/meditate" || currentPage === "/meditate/sessions") {
       return (
         <>
-          <li className="sessions-link">
-            <NavLink to="/meditate/sessions">Sessions</NavLink>
+          <li className="sessions-li">
+            <NavLink to="/meditate/sessions">Meditation Sessions</NavLink>
           </li>
         </>
       )
@@ -54,8 +67,8 @@ const NavBar = props => {
     if (currentPage === "/focus" || currentPage === "/focus/sessions") {
       return (
         <>
-          <li className="sessions-link">
-            <NavLink to="/focus/sessions">Sessions</NavLink>
+          <li className="sessions-li">
+            <NavLink to="/focus/sessions">Focus Sessions</NavLink>
           </li>
         </>
       )
@@ -87,12 +100,4 @@ const NavBar = props => {
   )
 }
 
-
-// REDUX
-const mapStateToProps = state => {
-  return {
-    user: state.user
-  }
-}
-
-export default withRouter(connect(mapStateToProps)(NavBar))
+export default withRouter(NavBar)

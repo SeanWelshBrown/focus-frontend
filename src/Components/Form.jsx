@@ -1,7 +1,14 @@
 import React from 'react';
 import { useState } from 'react';
+import { logInOrCreateUser } from '../fetches'
+import { useDispatch } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
 
 const Form = props => {
+
+  // REDUX
+  const dispatch = useDispatch();
 
   // STATE
   const [form, setForm] = useState({ username: "", password: "", profilePic: ""})
@@ -24,16 +31,38 @@ const Form = props => {
     })
   }
 
-  // handles submitting form conditionally with either a log-in or an account registration passed down from parent
-  const handleInitialSubmit = (e) => {
+  // handles submitting form conditionally by dispatching either a Login action or an account registration action
+  function handleInitialSubmit(e) {
     e.preventDefault()
     let endpoint;
+    let userObj = {
+      username: form.username,
+      password: form.password
+    }
+
     if (props.formName === "Login Form") {
       endpoint = "login"
     } else {
       endpoint = "users"
+      userObj = {
+        ...userObj,
+        profile_pic: form.profilePic
+      }
     }
     
+    logInOrCreateUser(endpoint, userObj)
+    .then( userData => {
+      if (userData.user && userData.token) {
+        localStorage.token = userData.token;
+        dispatch({
+          type: "SET_USER",
+          payload: userData
+        })
+        props.history.push("/")
+      } else {
+        alert(userData.error)
+      }
+    })
   }
 
 
@@ -57,7 +86,7 @@ const Form = props => {
         <br />
         <label htmlFor="password">Password: </label>
         <input 
-          type="text" 
+          type="password" 
           autoComplete="off"
           name="password" 
           value={form.password}
@@ -88,4 +117,4 @@ const Form = props => {
 
 }
 
-export default Form;
+export default withRouter(Form);
