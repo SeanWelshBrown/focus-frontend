@@ -17,12 +17,12 @@ import Meditate from './Containers/Meditate';
 import MeditationSessions from './Containers/MeditationSessions';
 import About from './Static/About'
 import NotFound from './Static/NotFound';
-
-// END imports
+import Footer from './Static/Footer'
 
 
 const App = (props) => {
 
+  // REDUX
   const dispatch = useDispatch()
 
   // initial component mount
@@ -62,40 +62,42 @@ const App = (props) => {
             <NavBar />
           </div>
           <div className="content-div">
-          <Route render={({ location }) => (
-            <TransitionGroup>
-            <CSSTransition
-              key={location.key}
-              timeout={300}
-              classNames='fade'
-            >
+            <Route render={({ location }) => (
+              <TransitionGroup>
+                <CSSTransition
+                  key={location.key}
+                  timeout={400}
+                  classNames='fade'
+                >
 
-              <Switch location={ location }>
+                    <Switch location={ location }>
 
-                <Route path="/" exact render={ HomePage } />
+                      <Route path="/" exact render={ HomePage } />
 
-                <Route path="/meditate" exact render={ Meditate } />
-                <Route path="/meditate/sessions" render={ MeditationSessions } />
+                      <Route path="/meditate" exact render={ Meditate } />
+                      <Route path="/meditate/sessions" render={ MeditationSessions } />
 
-                <Route path="/focus" exact render={ Focus } />
-                <Route path="/focus/sessions" render={ FocusSessions } />
+                      <Route path="/focus" exact render={ Focus } />
+                      <Route path="/focus/sessions" render={ FocusSessions } />
 
-                <Route path="/about" render={ About } />
+                      <Route path="/about" render={ About } />
 
-                <Route path="/login" render={ renderForm } />
-                <Route path="/register" render={ renderForm } />
-                <Route path="/profile" render={ Profile } />
+                      <Route path="/login" render={ renderForm } />
+                      <Route path="/register" render={ renderForm } />
+                      <Route path="/profile" render={ Profile } />
 
-                <Route path="*" render={ NotFound } />
-                
-              </Switch>
+                      <Route path="*" render={ NotFound } />
+                      
+                    </Switch>
 
-            </CSSTransition>
-            </TransitionGroup>
-          )}/>
+                </CSSTransition>
+              </TransitionGroup>
+            )}/>
           </div>
 
         </div>
+
+        <Footer />
 
       </div>
 

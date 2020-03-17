@@ -4,8 +4,9 @@ const HomePage = props => {
 
   return (
     <div>
-      <h1>This Page</h1>
-      <p>This is a test of me typing out this new font.</p>
+      <h1 className="home-clock">12:30 PM</h1>
+      <h2 className="home-weather">58° Partly Cloudy</h2>
+      <p className="home-quote">This is a placeholder motivational quote, meant to make you feel good." - Some Wise Person</p>
     </div>
   )
 

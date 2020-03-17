@@ -53,7 +53,7 @@ const NavBar = props => {
       return (
         <>
           <li className="sessions-li">
-            <NavLink to="/meditate/sessions">Meditation Sessions</NavLink>
+            <NavLink to="/meditate/sessions">→ Meditation Sessions</NavLink>
           </li>
         </>
       )
@@ -68,7 +68,7 @@ const NavBar = props => {
       return (
         <>
           <li className="sessions-li">
-            <NavLink to="/focus/sessions">Focus Sessions</NavLink>
+            <NavLink to="/focus/sessions">→ Focus Sessions</NavLink>
           </li>
         </>
       )
