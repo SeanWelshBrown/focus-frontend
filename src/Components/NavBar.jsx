@@ -9,6 +9,9 @@ const NavBar = props => {
   const dispatch = useDispatch();
   const user = useSelector( state => state.user )
   
+  // CONSTANTS
+  let currentPage = props.history.location.pathname
+
 
   // sends an action to clear the current user and token from state when "Log out" is selected from the NavBar
   const handleLogOut = () => {
@@ -24,10 +27,10 @@ const NavBar = props => {
       return (
         <>
           <li>
-          <NavLink to="/login">Login</NavLink>
+            <NavLink to="/login" className={currentPage + "-li"}>Login</NavLink>
           </li>
           <li>
-            <NavLink to="/register">Register</NavLink>
+            <NavLink to="/register" className={currentPage + "-li"}>Register</NavLink>
           </li>
         </>
       )
@@ -35,7 +38,7 @@ const NavBar = props => {
       return (
         <>
           <li>
-            <NavLink to="/profile">Profile</NavLink>
+            <NavLink to="/profile" className={currentPage + "-li"}>Profile</NavLink>
           </li>
           <li>
             <NavLink to="/" onClick={handleLogOut}>Log out</NavLink>
@@ -47,13 +50,12 @@ const NavBar = props => {
 
   // conditionally renders an extra link under meditate/focus options in navbar based on if the user is currently clicked onto either of those pages
   const conditionalRenderForMeditate = () => {
-    let currentPage = props.history.location.pathname
 
-    if (currentPage === "/meditate" || currentPage === "/meditate/sessions") {
+    if (currentPage === "/meditate" || currentPage === "/meditation_sessions") {
       return (
         <>
           <li className="sessions-li">
-            <NavLink to="/meditate/sessions">→ Meditation Sessions</NavLink>
+            <NavLink to="/meditation_sessions" className={currentPage + "-li"}>→ Meditation Sessions</NavLink>
           </li>
         </>
       )
@@ -62,13 +64,12 @@ const NavBar = props => {
     }
   }
   const conditionalRenderForFocus = () => {
-    let currentPage = props.history.location.pathname
 
-    if (currentPage === "/focus" || currentPage === "/focus/sessions") {
+    if (currentPage === "/focus" || currentPage === "/focus_sessions") {
       return (
         <>
           <li className="sessions-li">
-            <NavLink to="/focus/sessions">→ Focus Sessions</NavLink>
+            <NavLink to="/focus_sessions" className={currentPage + "-li"}>→ Focus Sessions</NavLink>
           </li>
         </>
       )
@@ -82,18 +83,18 @@ const NavBar = props => {
   return (
     <ul className="nav">
       <li>
-        <NavLink to="/" exact>Home</NavLink>
+        <NavLink to="/" exact className={currentPage + "-li"}>Home</NavLink>
       </li>
       <li>
-        <NavLink to="/meditate">Meditate</NavLink>
+        <NavLink to="/meditate" className={currentPage + "-li"}>Meditate</NavLink>
       </li>
         {conditionalRenderForMeditate()}
       <li>
-        <NavLink to="/focus">Focus</NavLink>
+        <NavLink to="/focus" className={currentPage + "-li"}>Focus</NavLink>
       </li>
         {conditionalRenderForFocus()}
       <li>
-        <NavLink to="/about">About</NavLink>
+        <NavLink to="/about" className={currentPage + "-li"}>About</NavLink>
       </li>
       {conditionalRenderForLogin()}
     </ul>

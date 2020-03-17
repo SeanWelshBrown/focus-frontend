@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const Profile = props => {
@@ -18,4 +17,4 @@ const Profile = props => {
 
 }
 
-export default withRouter(Profile);
+export default Profile;

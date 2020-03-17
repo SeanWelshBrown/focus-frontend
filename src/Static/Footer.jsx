@@ -8,9 +8,9 @@ const Footer = () => {
   return (
     <div className="footer">
       <p>Developed by Sean Welsh Brown [Access Labs // Brooklyn, 2020]</p>
-      <a href="https://github.com/SeanWelshBrown" target="_blank"><img src={github_mark} alt="GitHub logo" /></a>
-      <a href="https://twitter.com/SeanWelshBrown" target="_blank"><img src={twitter_mark} alt="Twitter logo" /></a>
-      <a href="https://medium.com/@seanwelshbrown" target="_blank"><img src={medium_mark} alt="Medium logo" /></a>
+      <a href="https://github.com/SeanWelshBrown" target="_blank" rel="noopener noreferrer"><img src={github_mark} alt="GitHub logo" /></a>
+      <a href="https://twitter.com/SeanWelshBrown" target="_blank" rel="noopener noreferrer"><img src={twitter_mark} alt="Twitter logo" /></a>
+      <a href="https://medium.com/@seanwelshbrown" target="_blank" rel="noopener noreferrer"><img src={medium_mark} alt="Medium logo" /></a>
     </div>
   )
 

@@ -21,6 +21,7 @@ body {
   animation: fadeIn 2s 1;
 }
 
+
 /* React Transition animations */
 .fade-enter {
   opacity: 0;
@@ -42,6 +43,7 @@ body {
   transition: opacity 0ms ease-in;
 }
 
+
 /* header */
 .header {
   position: absolute;
@@ -50,6 +52,7 @@ body {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   text-shadow: 1px 1px lightsteelblue;
 }
+
 
 /* Primary Content divs */
 .content-container {
@@ -76,17 +79,16 @@ body {
   position: relative;
 }
 
+
 /* NavBar */
 .nav  {
   list-style-type: none;
   text-align: center;
   padding: 0;
-  /* margin-top: auto;
-  margin-bottom: auto; */
 }
 
 .nav li {
-  padding: 14%;
+
 }
 
 .nav li:hover {
@@ -102,8 +104,38 @@ body {
 }
 
 .nav a {
+  padding: 14%;
+  display: block;
   text-decoration: none;
   color: rgb(31, 66, 117);
+}
+
+.\/-li.active {
+  font-weight: bold;
+}
+.\/meditate-li.active {
+  font-weight: bold;
+}
+.\/meditation_sessions-li.active {
+  font-weight: bold;
+}
+.\/focus-li.active {
+  font-weight: bold;
+}
+.\/focus_sessions-li.active {
+  font-weight: bold;
+}
+.\/about-li.active {
+  font-weight: bold;
+}
+.\/login-li.active {
+  font-weight: bold;
+}
+.\/register-li.active {
+  font-weight: bold;
+}
+.\/profile-li.active {
+  font-weight: bold;
 }
 
 @keyframes fadeIn {
@@ -114,6 +146,7 @@ body {
     opacity: 1.0;
   }
 }
+
 
 /* Footer */
 .footer {
@@ -139,7 +172,7 @@ body {
 .footer img {
   height: 25px;
   padding-left: 10px;
-  padding-bottom: 2px;
+  padding-top: 3px;
 }
 
 .footer img:hover {
@@ -148,10 +181,14 @@ body {
   cursor: pointer;
 }
 
+
 /* Home Page CSS */
 .home-clock {
-  font-size: 90px;
+  font-size: 95px;
   margin: 0;
+  -webkit-text-fill-color: rgba(224, 240, 255, 0.219);
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: rgb(31, 66, 117);
 }
 
 .home-weather {
@@ -162,6 +199,66 @@ body {
 .home-quote {
   font-style: italic;
 }
+
+
+/* Meditation Page CSS */
+.meditation-timer {
+  font-size: 175px;
+  margin: 0;
+  -webkit-text-fill-color: rgba(224, 240, 255, 0.219);
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: rgb(31, 66, 117);
+}
+
+.timer-btn-container {
+  
+}
+
+.timer-btn {
+  box-shadow: 1px 1px lightsteelblue;
+  border: 2px solid rgba(31, 65, 117, 0.788);
+  border-radius: 7px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: rgb(31, 66, 117);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   /* REACT CSS */

@@ -72,21 +72,21 @@ const App = (props) => {
 
                     <Switch location={ location }>
 
-                      <Route path="/" exact render={ HomePage } />
+                      <Route path="/" exact render={() => <HomePage />} />
 
-                      <Route path="/meditate" exact render={ Meditate } />
-                      <Route path="/meditate/sessions" render={ MeditationSessions } />
+                      <Route path="/meditate" exact render={() => <Meditate />} />
+                      <Route path="/meditation_sessions" render={() => <MeditationSessions />} />
 
-                      <Route path="/focus" exact render={ Focus } />
-                      <Route path="/focus/sessions" render={ FocusSessions } />
+                      <Route path="/focus" exact render={() => <Focus />} />
+                      <Route path="/focus_sessions" render={() => <FocusSessions />} />
 
-                      <Route path="/about" render={ About } />
+                      <Route path="/about" render={() => <About />} />
 
                       <Route path="/login" render={ renderForm } />
                       <Route path="/register" render={ renderForm } />
-                      <Route path="/profile" render={ Profile } />
+                      <Route path="/profile" render={() => <Profile />} />
 
-                      <Route path="*" render={ NotFound } />
+                      <Route path="*" render={() => <NotFound />} />
                       
                     </Switch>
 
