@@ -30,10 +30,14 @@ const App = (props) => {
     if (localStorage.getItem("token")) {
       persistUser()
       .then( userData => {
-        dispatch({
-          type: "SET_USER",
-          payload: userData
-        })
+        if (userData.user) {
+          dispatch({
+            type: "SET_USER",
+            payload: userData
+          })
+        } else {
+          localStorage.clear()
+        }
       })
     }
   })

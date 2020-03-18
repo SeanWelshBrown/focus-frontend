@@ -12,6 +12,26 @@ body {
   color: rgb(31, 66, 117);
 }
 
+button {
+  box-shadow: 0 3px lightsteelblue;
+  border: 2px solid rgba(31, 65, 117, 0.788);
+  border-radius: 7px;
+  font-size: 15px;
+  font-weight: bold;
+  color: rgb(31, 66, 117);
+  outline: none;
+}
+
+button:hover {
+  background-color: rgba(198, 228, 255, 0.322)
+}
+
+button:active {
+  background-color: rgba(198, 228, 255, 0.322);
+  box-shadow: 0 1px lightsteelblue;
+  transform: translateY(2px);
+}
+
 .main-wrapper {
   display: flex;
   justify-content: center;
@@ -104,7 +124,7 @@ body {
 }
 
 .nav a {
-  padding: 14%;
+  padding: 10%;
   display: block;
   text-decoration: none;
   color: rgb(31, 66, 117);
@@ -184,10 +204,10 @@ body {
 
 /* Home Page CSS */
 .home-clock {
-  font-size: 95px;
+  font-size: 90px;
   margin: 0;
-  -webkit-text-fill-color: rgba(224, 240, 255, 0.219);
-  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-fill-color: rgba(198, 228, 255, 0.219);
+  -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: rgb(31, 66, 117);
 }
 
@@ -203,10 +223,10 @@ body {
 
 /* Meditation Page CSS */
 .meditation-timer {
-  font-size: 175px;
+  font-size: 150px;
   margin: 0;
-  -webkit-text-fill-color: rgba(224, 240, 255, 0.219);
-  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-fill-color: rgba(198, 228, 255, 0.219);
+  -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: rgb(31, 66, 117);
 }
 
@@ -215,9 +235,6 @@ body {
 }
 
 .timer-btn {
-  box-shadow: 1px 1px lightsteelblue;
-  border: 2px solid rgba(31, 65, 117, 0.788);
-  border-radius: 7px;
   padding-left: 25px;
   padding-right: 25px;
   padding-top: 5px;
@@ -225,14 +242,30 @@ body {
   margin-left: 5px;
   margin-right: 5px;
   margin-bottom: 10px;
-  font-size: 15px;
-  font-weight: bold;
-  color: rgb(31, 66, 117);
 }
 
+.timer-btn.inactive {
+  opacity: 0.3;
+}
 
+.timer-btn.reset {
+  font-size: 12px;
+  line-height: 1px;
+}
 
+.timer-btn.reset.fadeOut{
+  opacity:0;
+  width:0;
+  height:0;
+  transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 0.5s;
 
+}
+.timer-btn.reset.fadeIn{
+  opacity:1;
+  width:100px;
+  height:20px;
+  transition: width 0.5s, height 0.5s, opacity 0.5s 0.5s;
+}
 
 
 
