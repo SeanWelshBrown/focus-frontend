@@ -55,7 +55,7 @@ const NavBar = props => {
       return (
         <>
           <li className="sessions-li">
-            <NavLink to="/meditation_sessions" className={currentPage + "-li"}>→ Meditation Sessions</NavLink>
+            <NavLink to="/meditation_sessions" className={currentPage + "-li"}>↳ Meditation Sessions</NavLink>
           </li>
         </>
       )
@@ -69,7 +69,7 @@ const NavBar = props => {
       return (
         <>
           <li className="sessions-li">
-            <NavLink to="/focus_sessions" className={currentPage + "-li"}>→ Focus Sessions</NavLink>
+            <NavLink to="/focus_sessions" className={currentPage + "-li"}>↳ Focus Sessions</NavLink>
           </li>
         </>
       )

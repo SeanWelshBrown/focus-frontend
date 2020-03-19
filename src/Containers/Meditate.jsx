@@ -1,17 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import { Prompt } from 'react-router-dom'
+import { useSelector } from 'react-redux';
+import { Prompt } from 'react-router-dom';
+
+import MeditateModal from '../Components/MeditateModal';
+import { updateUserTimeMeditated, postMeditationSession } from '../fetches';
 
 const Meditate = props => {
 
-
-  // STATE
+  // STATE/GLOBALS
   const [timer, setTimer] = useState({ hours: 0, minutes: 10, seconds: 0 })
   const [timerCopy, setTimerCopy] = useState({})
+
   const [isCounting, setIsCounting] = useState(false)
   const [timerIsActive, setTimerIsActive] = useState(false)
-  const [timerInfo, setTimerInfo] = useState({ duration: 0, startTime: "", endTime: "" })
+  const [showModal, setShowModal] = useState(false)
+
+  const [timerInfo, setTimerInfo] = useState({ duration: 0, startTime: "" })
+  const [meditationSession, setMeditationSession] = useState({ start_time: "", end_time: "", duration: 0 })
   
+
   const { hours, minutes, seconds } = timer
+
+  // REDUX
+  const user = useSelector( state => state.user )
 
 
 
@@ -58,7 +69,7 @@ const Meditate = props => {
   // either starts or pauses the countdown timer conditionally, based off of state
   const handleStartBtnClick = () => {
 
-    if (isCounting === false) {
+    if (isCounting === false && timerIsActive === false) {
       
       const today = new Date();
       const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
@@ -67,15 +78,16 @@ const Meditate = props => {
       
       let timerInSeconds = (timer.hours * 3600) + (timer.minutes * 60) + timer.seconds
       
-      setTimerInfo({ ...timerInfo, duration: timerInSeconds, startTime: dateTime})
+      setTimerInfo({ duration: timerInSeconds, startTime: dateTime })
       setTimerCopy(timer)
       
       setIsCounting(!isCounting)
-
-      if (!timerIsActive) {
-        setTimerIsActive(!timerIsActive)
-      }
+      setTimerIsActive(!timerIsActive)
       
+    } else if (isCounting === false && timerIsActive === true) {
+
+      setIsCounting(!isCounting)
+
     } else if (isCounting === true) {
 
       setIsCounting(!isCounting)
@@ -96,19 +108,61 @@ const Meditate = props => {
 
   // timer decrementing function set to an interveral on "start"
   const countDownTimer = () => {
+
     if (seconds > 0) {
       setTimer({ ...timer, seconds: seconds - 1 })
     }
 
     if (seconds === 0) {
       if (hours === 0 && minutes === 0) {
-        // clearInterval
+        timerIsFinished()
       } else if (hours > 0 && minutes === 0) {
         setTimer({ ...timer, hours: hours - 1, minutes: 59, seconds: 59 })
       } else {
         setTimer({ ...timer, minutes: minutes - 1, seconds: 59 })
       }
     }
+  }
+
+
+  // actions to take place when a timer is allowed to run its course all the way to zero
+  const timerIsFinished = () => {
+
+    setIsCounting(!isCounting)
+    setTimerIsActive(!timerIsActive)
+    setTimer(timerCopy)
+
+    const today = new Date();
+    const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    const endTime = date+' '+time;
+
+    setMeditationSession({
+      start_time: timerInfo.startTime,
+      end_time: endTime,
+      duration: timerInfo.duration,
+    })
+
+    setShowModal(!showModal)
+
+    if (user.id > 0) {
+      updateUserTimeMeditated(user.id, timerInfo.duration)
+    }
+
+    setTimerInfo({ ...timerInfo, duration: 0, startTime: "" })
+  }
+
+
+  // sent down as a prop to the modal when a session finishes, to be called when the "save" button is hit. Fires off a fetch to the back-end to save the session to the currently logged-in user
+  const saveMeditationSession = (note) => {
+
+    const token = localStorage.getItem("token")
+    const meditationSessionObj = {
+      ...meditationSession,
+      note: note
+    }
+    postMeditationSession(meditationSessionObj, token)
+
   }
 
 
@@ -132,6 +186,13 @@ const Meditate = props => {
         message="Timer is currently active, are you sure you want to leave?"
       />
       
+      <MeditateModal
+        show={showModal}
+        onHide={() => setShowModal(false)}
+        user={user}
+        saveMeditationSession={saveMeditationSession}
+      />
+
       <h1 className="meditation-timer">
         { hours > 0 ? `${hours}:` : "" }{ hours > 0 && minutes < 10 ? `0${minutes}` : minutes }:{ seconds < 10 ? `0${seconds}` : seconds }
       </h1>

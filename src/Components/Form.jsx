@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { logInOrCreateUser } from '../fetches'
+import { createOrLogInUser } from '../fetches'
 import { useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
@@ -50,7 +50,7 @@ const Form = props => {
       }
     }
     
-    logInOrCreateUser(endpoint, userObj)
+    createOrLogInUser(endpoint, userObj)
     .then( userData => {
       if (userData.user && userData.token) {
         localStorage.token = userData.token;

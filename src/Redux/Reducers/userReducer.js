@@ -1,7 +1,7 @@
 let initialState = {
   user: {
-    username: "",
     id: 0,
+    username: "",
     profile_pic: ""
   },
   token: ""
