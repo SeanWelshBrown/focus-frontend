@@ -1,10 +1,16 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import SessionCard from '../Components/SessionCard';
 
 const MeditationSessions = props => {
 
+  const sessions = useSelector( state => state.meditationSessions )
+
+  const renderSessionCards = () => sessions.map( session => <SessionCard key={session.id} session={session} /> )
+
   return (
-    <div>
-      <h1>Meditation Sessions</h1>
+    <div className="sessions-container">
+      {renderSessionCards()}
     </div>
   )
 

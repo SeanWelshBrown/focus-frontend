@@ -8,7 +8,7 @@ import { updateUserTimeMeditated, postMeditationSession } from '../fetches';
 const Meditate = props => {
 
   // STATE/GLOBALS
-  const [timer, setTimer] = useState({ hours: 0, minutes: 10, seconds: 0 })
+  const [timer, setTimer] = useState({ hours: 0, minutes: 0, seconds: 2 })
   const [timerCopy, setTimerCopy] = useState({})
 
   const [isCounting, setIsCounting] = useState(false)
@@ -74,11 +74,11 @@ const Meditate = props => {
       const today = new Date();
       const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
       const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-      const dateTime = date+' '+time;
+      const startTime = date+' '+time;
       
       let timerInSeconds = (timer.hours * 3600) + (timer.minutes * 60) + timer.seconds
       
-      setTimerInfo({ duration: timerInSeconds, startTime: dateTime })
+      setTimerInfo({ duration: timerInSeconds, startTime: startTime })
       setTimerCopy(timer)
       
       setIsCounting(!isCounting)

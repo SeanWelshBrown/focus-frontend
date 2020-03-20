@@ -1,9 +1,9 @@
   /* CUSTOM CSS */
 
-/* Globals */
+/* GLOBALS */
 body {
   position: relative;
-  min-height: 100%;
+  height: 100%;
   margin: 0;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -312,17 +312,18 @@ textarea {
 }
 
 
-/* header */
+/* HEADER */
 .header {
   position: absolute;
   top: 4vh;
   color: rgba(255, 255, 255, 0.925);
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-style: oblique;
   text-shadow: 1px 1px lightsteelblue;
 }
 
 
-/* Primary Content divs */
+/* PRIMARY CONTENT DIVS */
 .content-container {
   background-color: rgba(255, 255, 255, 0.925);
   display: flex;
@@ -342,13 +343,16 @@ textarea {
 }
 
 .content-div {
+  display: flex;
+  justify-content: center;
   width: 84%;
   margin: auto;
+  max-height: 100%;
   position: relative;
 }
 
 
-/* NavBar */
+/* NAVBAR CSS */
 .nav  {
   list-style-type: none;
   text-align: center;
@@ -416,7 +420,7 @@ textarea {
 }
 
 
-/* Footer */
+/* FOOTER CSS */
 .footer {
   display: flex;
   position: fixed;
@@ -434,11 +438,11 @@ textarea {
 }
 
 .footer p {
-  
+  font-size: 0.9rem;
 }
 
 .footer img {
-  height: 25px;
+  height: 23px;
   padding-left: 10px;
   padding-top: 3px;
 }
@@ -450,7 +454,7 @@ textarea {
 }
 
 
-/* Home Page CSS */
+/* HOME PAGE CSS */
 .home-clock {
   font-size: 90px;
   margin: 0;
@@ -469,7 +473,7 @@ textarea {
 }
 
 
-/* Meditation Page CSS */
+/* MEDITATION PAGE CSS */
 .meditation-timer {
   font-size: 11rem;
   margin: 0;
@@ -514,6 +518,74 @@ textarea {
   height:20px;
   transition: width 0.5s, height 0.5s, opacity 0.5s 0.5s;
 }
+
+/* SESSIONS PAGE CSS */
+.sessions-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+}
+
+.sessions-container::-webkit-scrollbar {
+  display: none;
+}
+
+.session-card {
+  /* position: relative; */
+  border: 1px solid lightgrey;
+  box-shadow: 1px 1px 10px lightsteelblue;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 20px;
+  width: 200px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  transition: all .2s ease-in-out;
+}
+
+.session-card h4 {
+  margin: 15px;
+}
+.session-card h5 {
+  margin: 15px;
+}
+.session-card p {
+  margin: 15px;
+}
+
+.session-card:hover {
+  transform: scale(1.02);
+}
+
+
+/* PROFILE PAGE CSS */
+.profile-container {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  overflow-y: scroll;
+  width: 100%;
+}
+
+.profile-content {
+  /* position: relative; */
+  /* margin: auto; */
+}
+
+.profile-pic {
+  height: 16em;
+  border-radius: 20px;
+  box-shadow: 2px 2px 10px lightsteelblue;
+}
+
+
+
 
 
 

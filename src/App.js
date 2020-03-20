@@ -40,7 +40,7 @@ const App = (props) => {
         }
       })
     }
-  })
+  }, [])
   
   // conditionally renders Login/Register form depending on which NavBar link is clicked
   const renderForm = () => {
@@ -65,16 +65,16 @@ const App = (props) => {
           <div className="nav-div">
             <NavBar />
           </div>
-          <div className="content-div">
+          {/* <div className="content-div"> */}
             <Route render={({ location }) => (
-              <TransitionGroup>
+              <TransitionGroup className="content-div">
                 <CSSTransition
                   key={location.key}
                   timeout={400}
                   classNames='fade'
                 >
 
-                    <Switch location={ location }>
+                    <Switch  className="test">
 
                       <Route path="/" exact render={() => <HomePage />} />
 
@@ -97,7 +97,7 @@ const App = (props) => {
                 </CSSTransition>
               </TransitionGroup>
             )}/>
-          </div>
+          {/* </div> */}
 
         </div>
 
