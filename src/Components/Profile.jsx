@@ -37,9 +37,8 @@ const Profile = props => {
         {user.profile_pic ? <img className="profile-pic" src={profile_pic} alt="profile pic" /> : <img className="profile-pic" src={profile_pic_placeholder} alt="profile pic" />}
         <h3>total time spent meditating:</h3>
         {returnTimeMeditated()}
-        <h1>test</h1>
-        <h1>test</h1>
-        <h1>test</h1>
+        <h3>total time spent focusing:</h3>
+        <p>~placeholder~</p>
       </div>
     </div>
   )

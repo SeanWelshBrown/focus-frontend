@@ -25,6 +25,12 @@ const userReducer = (state = initialState, action) => {
     case "CLEAR_USER":
       return initialState
 
+    case "DELETE_MEDITATION_SESSION":
+      return {
+        ...state,
+        meditationSessions: state.meditationSessions.filter( session => session.id !== action.payload )
+      }
+
     default:
       return state
 

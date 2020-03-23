@@ -52,3 +52,10 @@ export const postMeditationSession = (meditationSessionObj, token) => {
     body: JSON.stringify(meditationSessionObj)
   })
 }
+
+// deletes a meditation sesion on button click
+export const deleteMeditationSession = (id) => {
+  fetch(`${baseURL}meditation_sessions/${id}`, {
+    method: "DELETE"
+  })
+}
