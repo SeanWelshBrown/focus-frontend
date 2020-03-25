@@ -3,7 +3,8 @@ let initialState = {
     id: 0,
     username: "",
     profile_pic: "",
-    time_meditated: 0
+    time_meditated: 0,
+    time_focused: 0
   },
   meditationSessions: [],
   focusSessions: [],
@@ -19,6 +20,7 @@ const userReducer = (state = initialState, action) => {
         ...state,
         user: action.payload.user,
         meditationSessions: action.payload.user.meditation_sessions,
+        // focusSessions: action.payload.user.focus_sessions
         token: action.payload.token
       }
 

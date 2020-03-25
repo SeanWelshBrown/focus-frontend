@@ -8,15 +8,16 @@ import { updateUserTimeMeditated, postMeditationSession } from '../fetches';
 const Meditate = props => {
 
   // STATE/GLOBALS
-  const [timer, setTimer] = useState({ hours: 0, minutes: 0, seconds: 2 })
+  const [timer, setTimer] = useState({ hours: 0, minutes: 10, seconds: 0 })
   const [timerCopy, setTimerCopy] = useState({})
 
   const [isCounting, setIsCounting] = useState(false)
   const [timerIsActive, setTimerIsActive] = useState(false)
-  const [showModal, setShowModal] = useState(false)
-
+  
   const [timerInfo, setTimerInfo] = useState({ duration: 0, startTime: "" })
   const [meditationSession, setMeditationSession] = useState({ start_time: "", end_time: "", duration: 0 })
+
+  const [showModal, setShowModal] = useState(false)
   
 
   const { hours, minutes, seconds } = timer
@@ -192,6 +193,10 @@ const Meditate = props => {
         user={user}
         saveMeditationSession={saveMeditationSession}
       />
+
+      <h2 className="meditate-header">⤢ <em>m e d i t a t e</em> ⤡</h2>
+
+      <p className="meditate-timer-msg">( set a timer for your session and let your mind begin to settle <span role="img" aria-label="praying">🍃</span> )</p>
 
       <h1 className="meditation-timer">
         { hours > 0 ? `${hours}:` : "" }{ hours > 0 && minutes < 10 ? `0${minutes}` : minutes }:{ seconds < 10 ? `0${seconds}` : seconds }

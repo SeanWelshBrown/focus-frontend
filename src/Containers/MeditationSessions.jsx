@@ -6,6 +6,7 @@ const MeditationSessions = props => {
 
   const sessions = useSelector( state => state.meditationSessions )
 
+
   const renderSessionCards = () => sessions.map( session => <SessionCard key={session.id} session={session} /> )
 
   return (

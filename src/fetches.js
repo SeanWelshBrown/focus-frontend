@@ -1,5 +1,8 @@
 const baseURL = "http://localhost:4000/";
 
+
+  // AUTH FETCHES
+
 // to be called from Form.jsx; endpoint will be "login" || "users", and userObj will be created from the Form.jsx state
 export const createOrLogInUser = (endpoint, userObj) => {
   return (
@@ -26,19 +29,21 @@ export const persistUser = () => {
   )
 }
 
+
+
+  // MEDITATION FETCHES
+
 // called when a meditation session finishes, to update a User's total time meditated
 export const updateUserTimeMeditated = (userId, meditationDuration) => {
-  return (
-    fetch(`${baseURL}users/${userId}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json"
-      },
-      body: JSON.stringify({
-        meditation_duration: meditationDuration
-      })
+  fetch(`${baseURL}users/${userId}`, {
+    method: "PATCH",
+    headers: {
+      "content-type": "application/json"
+    },
+    body: JSON.stringify({
+      meditation_duration: meditationDuration
     })
-  )
+  })
 }
 
 // called when a user "saves" a completed meditation session, posting that session to the back-end under the logged-in user
@@ -59,3 +64,33 @@ export const deleteMeditationSession = (id) => {
     method: "DELETE"
   })
 }
+
+
+
+  // FOCUS FETCHES
+
+// called when a work timer completes on the focus component, updating a User's total time focused
+export const updateUserTimeFocused = (userId, focusDuration) => {
+  fetch(`${baseURL}users/${userId}`, {
+    method: "PATCH",
+    headers: {
+      "content-type": "application/json"
+    },
+    body: JSON.stringify({
+      focus_duration: focusDuration
+    })
+  })
+}
+
+// called when a user "saves" a completed meditation session, posting that session to the back-end under the logged-in user
+export const postFocusSession = (focusSessionObj, token) => {
+  fetch(`${baseURL}focus_sessions`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      "Authorization": `bearer ${token}`,
+    },
+    body: JSON.stringify(focusSessionObj)
+  })
+}
+

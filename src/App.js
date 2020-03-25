@@ -40,7 +40,7 @@ const App = (props) => {
         }
       })
     }
-  }, [])
+  })
   
   // conditionally renders Login/Register form depending on which NavBar link is clicked
   const renderForm = () => {

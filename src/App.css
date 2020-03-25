@@ -9,7 +9,7 @@ body {
   background-attachment: fixed;
   background-color: #669b9031;
   background-image: linear-gradient(180deg, #7ecbff2f 0%, #e0eaf5 74%);
-  color: rgb(31, 66, 117);
+  color: #1f4275;
 }
 
 button {
@@ -34,6 +34,11 @@ button:active {
 
 textarea {
   border-radius: 6px;
+  border: 1px lightsteelblue solid;
+}
+
+input {
+  border-radius: 5px;
   border: 1px lightsteelblue solid;
 }
 
@@ -193,7 +198,7 @@ textarea {
   -ms-flex-pack: justify;
   justify-content: center;
   padding-top: 1rem;
-  /* border-bottom: 1px solid #dee2e6; */
+  border-bottom: 1px solid #dee2e6;
   border-top-left-radius: calc(0.3rem - 1px);
   border-top-right-radius: calc(0.3rem - 1px);
 }
@@ -204,7 +209,7 @@ textarea {
 }
 
 .modal-title {
-  margin-bottom: 0;
+  margin-bottom: 10px;
   line-height: 1.5;
   opacity: 0.8;
   text-shadow: 2px 2px 5px lightsteelblue;
@@ -284,9 +289,12 @@ textarea {
   }
 }
 
-::placeholder {
+textarea::placeholder {
   text-align: center;
-  padding: 30px;
+  padding: 25px;
+}
+input::placeholder {
+  text-align: center;
 }
 
 
@@ -474,16 +482,21 @@ textarea {
 
 
 /* MEDITATION PAGE CSS */
+.meditate-header {
+  color: #1f4275;
+}
+
+.meditate-timer-msg {
+  font-size: 1rem;
+  color: #7e95b9;
+}
 .meditation-timer {
   font-size: 11rem;
   margin: 0;
+  line-height: 13rem;
   -webkit-text-fill-color: rgba(198, 228, 255, 0.219);
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: rgb(31, 66, 117);
-}
-
-.timer-btn-container {
-  
 }
 
 .timer-btn {
@@ -518,6 +531,7 @@ textarea {
   height:20px;
   transition: width 0.5s, height 0.5s, opacity 0.5s 0.5s;
 }
+
 
 /* SESSIONS PAGE CSS */
 .sessions-container {
@@ -559,7 +573,6 @@ textarea {
 .session-card p {
   margin: 15px;
 }
-
 .click-card-p {
   font-size: 0.7rem;
 }
@@ -576,6 +589,78 @@ textarea {
   font-size: 12px;
   /* margin-bottom: 10px; */
 }
+
+
+/* FOCUS PAGE CSS */
+.focus-header.work {
+  color: #751f41da;
+}
+.focus-header.break {
+  color: #1f6c75d3;
+}
+
+.focus-timer-msg {
+  font-size: 1rem;
+}
+.focus-timer-msg.work {
+  color: #964c69da;
+}
+.focus-timer-msg.break {
+  color: #336f75d3;
+}
+.focus-timer-msg.break.big {
+  font-size: 1.1rem;
+}
+
+.focus-timer {
+  font-size: 10rem;
+  margin: 0;
+  line-height: 11rem;
+}
+.focus-timer.work {
+  -webkit-text-fill-color: #ffc6cd10;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgba(97, 25, 67, 0.911);
+}
+.focus-timer.break {
+  -webkit-text-fill-color: #c6e4ff38;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #1f6c75d3;
+}
+
+.timer-btn.focus.work {
+  color: rgb(104, 26, 72);
+  border: 2px solid rgb(104, 26, 72);
+}
+.timer-btn.focus.work:hover {
+  background-color: #ffc6cd2a;
+}
+
+.timer-btn.focus.break {
+  color: #1f6c75d3;
+  border: 2px solid #1f6c75d3;
+}
+.timer-btn.focus.break:hover {
+  background-color: #acf7ff34;
+}
+
+.tally {
+  margin: 0em;
+  margin-bottom: 1rem;
+  line-height: 1;
+  font-size: 3rem;
+  color: #2A599D;
+}
+.tally.inactive {
+  color: #2A599D;
+}
+
+.modal-label {
+  font-size: 0.75rem;
+  font-style: italic;
+  line-height: 25px;
+}
+
 
 /* PROFILE PAGE CSS */
 .profile-container {
