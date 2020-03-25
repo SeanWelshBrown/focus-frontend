@@ -95,29 +95,49 @@ const FocusModal = props => {
         return (
           <Modal
             {...rest}
+            className="modal focus"
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
           >
-            <Modal.Header>
+            {/* <Modal.Header>
               <Modal.Title id="contained-modal-title-vcenter">
                 <em>meditation complete</em> <span role="img" aria-label="praying">🙏</span>
               </Modal.Title>
-            </Modal.Header>
+            </Modal.Header> */}
             <Modal.Body>
-              <h4>Save this session?</h4>
-              <p>(add an optional note on your experience below, click save, or click away to embrace impermanence.)</p>
-              <textarea
-                rows="6"
-                cols="40"
-                value={note}
-                placeholder="~Check in with yourself~"
+
+              <h4>Save and finish this Focus Session early?</h4>
+
+              <p>You can continue working on this session until it is completed (after <strong>4</strong> work sessions.)</p>
+              <p>Or, you may end early and save this session to your account with some additional info:</p>
+
+              <label className="modal-label" htmlFor="focusType">Focus type (optional):</label>
+              <br />
+              <input 
+                type="text"
+                name="focusType"
+                value={focusType}
+                placeholder="work, study, etc..."
                 onChange={e => setFormValue(e)}
               />
+              <br />
+
+              <label className="modal-label" htmlFor="note">Note (optional):</label>
+              <br />
+              <textarea
+                rows="5"
+                cols="35"
+                name="note"
+                value={note}
+                placeholder="How did this session go?"
+                onChange={e => setFormValue(e)}
+              />
+
             </Modal.Body>
             <Modal.Footer>
-              <button onClick={props.onHide}>Close</button>
-              <button>Save</button>
+              <button onClick={initialSaveBtnClick}>Save and Reset</button>
+              <button onClick={props.onHide}>Close and Continue</button>
             </Modal.Footer>
           </Modal>
         );
@@ -129,20 +149,22 @@ const FocusModal = props => {
       return (
         <Modal
           {...rest}
+          className="modal focus"
           size="lg"
           aria-labelledby="contained-modal-title-vcenter"
           centered
         >
-          <Modal.Header>
+          {/* <Modal.Header>
             <Modal.Title id="contained-modal-title-vcenter">
               <em>meditation complete</em> <span role="img" aria-label="praying">🙏</span>
             </Modal.Title>
-          </Modal.Header>
+          </Modal.Header> */}
           <Modal.Body>
-            <p>(Log in to save this session, or click away to embrace impermanence.)</p>
+            <h4>You've completed a full Focus Session!</h4>
+            <p>(Log in to save sessions to your account, or continue working and stay focused.)</p>
           </Modal.Body>
           <Modal.Footer>
-            <button onClick={props.onHide}>Close</button>
+            <button onClick={props.onHide}>Close and Continue</button>
           </Modal.Footer>
         </Modal>
       );

@@ -11,14 +11,14 @@ import FocusModal from '../Components/FocusModal';
 const Focus = props => {
 
   // STATE
-  const [timer, setTimer] = useState({ hours: 0, minutes: 0, seconds: 1 })
+  const [timer, setTimer] = useState({ hours: 0, minutes: 25, seconds: 0 })
   const [timerCopy, setTimerCopy] = useState({})
   const [timerInfo, setTimerInfo] = useState({ duration: 0, startTime: "" })
   const [focusSession, setFocusSession] = useState({ start_time: "", end_time: "", duration: 0 })
 
   const [userWorkTimer, setUserWorkTimer] = useState({ hours: 0, minutes: 25, seconds: 0 })
-  const [userBreakTimer, setUserBreakTimer] = useState({ hours: 0, minutes: 0, seconds: 1 })
-  const [userBigBreakTimer, setUserBigBreakTimer] = useState({ hours: 0, minutes: 0, seconds: 1 })
+  const [userBreakTimer, setUserBreakTimer] = useState({ hours: 0, minutes: 5, seconds: 0 })
+  const [userBigBreakTimer, setUserBigBreakTimer] = useState({ hours: 0, minutes: 15, seconds: 0 })
 
   const [workChunks, setWorkChunks] = useState("")
   const [breakChunks, setBreakChunks] = useState("")
@@ -129,8 +129,10 @@ const Focus = props => {
     if (isCounting) {
       setIsCounting(!isCounting)
     }
-    setTimerIsActive(!timerIsActive)
-    setTimer(timerCopy)
+    if (timerIsActive) {
+      setTimerIsActive(!timerIsActive)
+      setTimer(timerCopy)
+    }
   }
 
 
@@ -183,7 +185,7 @@ const Focus = props => {
     }
 
       // sets or updates the overall focus session's start_time, end_time and total duration
-    if (workSessionTally === 0) {
+    if (!!workChunks === false) {
 
       setFocusSession({
         ...focusSession,
@@ -191,7 +193,7 @@ const Focus = props => {
         duration: timerInfo.duration,
       })
 
-    } else if (workSessionTally > 0 && workSessionTally < 3) {
+    } else if (workSessionTally < 3) {
 
       setFocusSession({
         ...focusSession,
@@ -249,6 +251,10 @@ const Focus = props => {
       // updates the current focus session's breakChunks
     setBreakChunks(breakChunks + ` ${timerInfo.duration.toString()}`)
 
+    if (workSessionTally === 4) {
+      setWorkSessionTally(0)
+    }
+
     setIsWorking(true)
 
       // resets timerInfo
@@ -282,6 +288,20 @@ const Focus = props => {
     setIsWorking(true)
 
   }
+
+
+
+
+  // handles clicking the manual save button, displaying a conditional modal for an early save of the current Focus Session
+  const handleManualSaveBtn = () => {
+    setFocusSession({
+      ...focusSession,
+      end_time: returnEndTime()
+    })
+    setShowSaveModal(true)
+    setModalContext("manual save")
+  }
+
 
 
 
@@ -371,6 +391,8 @@ const Focus = props => {
         <button className={(focusBtnName() + " start")} onClick={handleStartBtnClick}>{isCounting ? "Pause ❚❚" : startBtnText() }</button>
         <br />
         <button className={timerIsActive ? focusBtnName() + " reset fadeIn" : focusBtnName() + " reset fadeOut"} onClick={handleResetBtnClick}>Reset</button>
+        <br />
+        <button className={!!workChunks ? focusBtnName() + " reset fadeIn save" : focusBtnName() + " reset fadeOut save"} onClick={handleManualSaveBtn}>Save Session</button>
       </div>
     </div>
   )

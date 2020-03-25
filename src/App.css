@@ -327,6 +327,7 @@ input::placeholder {
   color: rgba(255, 255, 255, 0.925);
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-style: oblique;
+  font-size: 2.5rem;
   text-shadow: 1px 1px lightsteelblue;
 }
 
@@ -523,7 +524,9 @@ input::placeholder {
   width:0;
   height:0;
   transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 0.5s;
-
+  /* margin: 0;
+  padding: 0;
+  border: 0; */
 }
 .timer-btn.reset.fadeIn{
   opacity:1;
@@ -659,6 +662,16 @@ input::placeholder {
   font-size: 0.75rem;
   font-style: italic;
   line-height: 25px;
+}
+
+.timer-btn.reset.fadeOut.save {
+  line-height: 15px;
+}
+.timer-btn.reset.fadeIn.save {
+  line-height: 13px;
+  height: 30px;
+  padding: 0px;
+  margin-top: 2px;
 }
 
 
