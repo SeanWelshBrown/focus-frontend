@@ -20,7 +20,7 @@ const userReducer = (state = initialState, action) => {
         ...state,
         user: action.payload.user,
         meditationSessions: action.payload.user.meditation_sessions,
-        // focusSessions: action.payload.user.focus_sessions
+        focusSessions: action.payload.user.focus_sessions,
         token: action.payload.token
       }
 

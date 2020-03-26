@@ -98,12 +98,14 @@ const Meditate = props => {
 
 
   // resets timer and all component states back to initial form when start button was clicked
-  const handleRestartBtnClick = () => {
+  const handleResetBtnClick = () => {
     if (isCounting) {
       setIsCounting(!isCounting)
     }
-    setTimerIsActive(!timerIsActive)
-    setTimer(timerCopy)
+    if (timerIsActive) {
+      setTimerIsActive(!timerIsActive)
+      setTimer(timerCopy)
+    }
   }
 
 
@@ -208,7 +210,7 @@ const Meditate = props => {
         <br />
         <button className="timer-btn start" onClick={handleStartBtnClick}>{isCounting ? "Pause ❚❚" : startBtnText() }</button>
         <br />
-        <button className={timerIsActive ? "timer-btn reset fadeIn" : "timer-btn reset fadeOut"} onClick={handleRestartBtnClick}>Reset</button>
+        <button className={timerIsActive ? "timer-btn reset fadeIn" : "timer-btn reset fadeOut"} onClick={handleResetBtnClick}>Reset</button>
       </div>
 
     </div>

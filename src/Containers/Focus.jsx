@@ -273,7 +273,7 @@ const Focus = props => {
       work_chunks: workChunks,
       break_chunks: breakChunks,
       focus_type: focusForm.focusType,
-      notes: focusForm.note
+      note: focusForm.note
     }
     postFocusSession(focusSessionObj, token)
 
