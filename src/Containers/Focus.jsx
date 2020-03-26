@@ -294,12 +294,14 @@ const Focus = props => {
 
   // handles clicking the manual save button, displaying a conditional modal for an early save of the current Focus Session
   const handleManualSaveBtn = () => {
-    setFocusSession({
-      ...focusSession,
-      end_time: returnEndTime()
-    })
-    setShowSaveModal(true)
-    setModalContext("manual save")
+    if (!!workChunks) {
+      setFocusSession({
+        ...focusSession,
+        end_time: returnEndTime()
+      })
+      setShowSaveModal(true)
+      setModalContext("manual save")
+    }
   }
 
 
@@ -358,7 +360,7 @@ const Focus = props => {
   
   // RENDER
   return (
-    <div>
+    <div className="focus-container">
 
       <Prompt 
         when={sessionIsActive}

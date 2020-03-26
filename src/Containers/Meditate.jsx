@@ -182,7 +182,7 @@ const Meditate = props => {
 
   // RENDER
   return (
-    <div>
+    <div className="meditate-container">
 
       <Prompt 
         when={timerIsActive}

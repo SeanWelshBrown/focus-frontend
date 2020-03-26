@@ -483,6 +483,10 @@ input::placeholder {
 
 
 /* MEDITATION PAGE CSS */
+.meditate-container {
+  overflow-y: scroll;
+}
+
 .meditate-header {
   color: #1f4275;
 }
@@ -536,65 +540,11 @@ input::placeholder {
 }
 
 
-/* SESSIONS PAGE CSS */
-.sessions-container {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  -ms-overflow-style: none;
-}
-
-.sessions-container::-webkit-scrollbar {
-  display: none;
-}
-
-.session-card {
-  position: relative;
-  border: 1px solid lightgrey;
-  box-shadow: 1px 1px 10px lightsteelblue;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 20px;
-  width: 200px;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-top: 10px;
-  margin-bottom: 15px;
-  padding-bottom: 25px;
-  transition: all .2s ease-in-out;
-}
-
-.session-card h4 {
-  margin: 15px;
-}
-.session-card h5 {
-  margin: 15px;
-}
-.session-card p {
-  margin: 15px;
-}
-.click-card-p {
-  font-size: 0.7rem;
-}
-
-.session-card:hover {
-  transform: scale(1.02);
-}
-
-.delete-btn {
-  position: absolute;
-  bottom: 10px;
-  right: 73px;
-  line-height: 13px;
-  font-size: 12px;
-  /* margin-bottom: 10px; */
-}
-
-
 /* FOCUS PAGE CSS */
+.focus-container {
+  overflow-y: scroll;
+}
+
 .focus-header.work {
   color: #751f41da;
 }
@@ -675,6 +625,64 @@ input::placeholder {
 }
 
 
+/* SESSIONS PAGE CSS */
+.sessions-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+}
+
+.sessions-container::-webkit-scrollbar {
+  display: none;
+}
+
+.session-card {
+  position: relative;
+  border: 1px solid lightgrey;
+  box-shadow: 1px 1px 10px lightsteelblue;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 20px;
+  width: 200px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding-bottom: 25px;
+  transition: all .2s ease-in-out;
+}
+
+.session-card h4 {
+  margin: 15px;
+}
+.session-card h5 {
+  margin: 15px;
+}
+.session-card p {
+  margin: 15px;
+}
+.click-card-p {
+  font-size: 0.7rem;
+}
+
+.session-card:hover {
+  transform: scale(1.02);
+}
+
+.delete-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 73px;
+  line-height: 13px;
+  font-size: 12px;
+  /* margin-bottom: 10px; */
+}
+
+
 /* PROFILE PAGE CSS */
 .profile-container {
   display: flex;
@@ -693,6 +701,14 @@ input::placeholder {
   height: 16em;
   border-radius: 20px;
   box-shadow: 2px 2px 10px lightsteelblue;
+}
+
+
+/*  ABOUT PAGE CSS */
+.about-container {
+  justify-content: center;
+  overflow-y: scroll;
+  width: 80%;
 }
 
 

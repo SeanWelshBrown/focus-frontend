@@ -4,12 +4,14 @@ import Modal from 'react-bootstrap/Modal';
 
 const FocusModal = props => {
 
+  
   // STATE
   const [focusForm, setFocusForm] = useState({ focusType: "", note: "" })
-
-
+  
+  
   const { focusType, note } = focusForm
   const { user, context, save, ...rest } = props
+ 
 
 
 
