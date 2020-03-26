@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { deleteMeditationSession } from '../fetches'
+import { deleteMeditationSession, deleteFocusSession } from '../fetches'
 import NoteModal from './NoteModal';
 
 
@@ -57,11 +57,20 @@ const SessionCard = props => {
 
 
 
-  // deletes a session from the database and local store
-  const handleDelete = () => {
+  // deletes a Meditation Session from the database and local store
+  const handleDeleteMeditation = () => {
     deleteMeditationSession(sessionId)
     dispatch({
       type: "DELETE_MEDITATION_SESSION",
+      payload: sessionId
+    })
+  }
+
+   // deletes a Focus Session from the database and local store
+  const handleDeleteFocus = () => {
+    deleteFocusSession(sessionId)
+    dispatch({
+      type: "DELETE_FOCUS_SESSION",
       payload: sessionId
     })
   }
@@ -116,7 +125,7 @@ const SessionCard = props => {
             <h5><u>note:</u></h5>
             <p><em>{session.note ? shortNote : "n/a"}</em>{session.note.length > 19 ? "..." : null}</p>
             {session.note.length > 19 ? <p className="click-card-p">(click card to see full note)</p> : null }
-            <span onClick={e => e.stopPropagation()}><button className="delete-btn" onClick={handleDelete}>delete</button></span>
+            <span onClick={e => e.stopPropagation()}><button className="delete-btn" onClick={handleDeleteMeditation}>delete</button></span>
           </>
 
         )
@@ -139,7 +148,7 @@ const SessionCard = props => {
             <h5><u>note:</u></h5>
             <p><em>{session.note ? shortNote : "n/a"}</em>{session.note.length > 19 ? "..." : null}</p>
             {session.note.length > 19 ? <p className="click-card-p">(click card to see full note)</p> : null }
-            <span onClick={e => e.stopPropagation()}><button className="delete-btn" onClick={handleDelete}>delete</button></span>
+            <span onClick={e => e.stopPropagation()}><button className="delete-btn" onClick={handleDeleteFocus}>delete</button></span>
           </>
 
         )

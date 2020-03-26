@@ -323,12 +323,12 @@ input::placeholder {
 /* HEADER */
 .header {
   position: absolute;
-  top: 4vh;
+  top: 3vh;
   color: rgba(255, 255, 255, 0.925);
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-style: oblique;
-  font-size: 2.5rem;
-  text-shadow: 1px 1px lightsteelblue;
+  font-size: 2.9rem;
+  text-shadow: 2px 2px lightsteelblue;
 }
 
 
@@ -670,7 +670,7 @@ input::placeholder {
 }
 
 .session-card:hover {
-  transform: scale(1.02);
+  transform: scale(1.018);
 }
 
 .delete-btn {

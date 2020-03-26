@@ -31,9 +31,10 @@ export const persistUser = () => {
 
 
 
+
   // MEDITATION FETCHES
 
-// called when a meditation session finishes, to update a User's total time meditated
+// called when a Meditation Session finishes, to update a User's total time meditated
 export const updateUserTimeMeditated = (userId, meditationDuration) => {
   fetch(`${baseURL}users/${userId}`, {
     method: "PATCH",
@@ -46,7 +47,7 @@ export const updateUserTimeMeditated = (userId, meditationDuration) => {
   })
 }
 
-// called when a user "saves" a completed meditation session, posting that session to the back-end under the logged-in user
+// called when a User "saves" a completed Meditation Session, posting that session to the back-end under the logged-in user
 export const postMeditationSession = (meditationSessionObj, token) => {
   fetch(`${baseURL}meditation_sessions`, {
     method: "POST",
@@ -58,7 +59,7 @@ export const postMeditationSession = (meditationSessionObj, token) => {
   })
 }
 
-// deletes a meditation sesion on button click
+// deletes a Meditation Session on button click
 export const deleteMeditationSession = (id) => {
   fetch(`${baseURL}meditation_sessions/${id}`, {
     method: "DELETE"
@@ -67,9 +68,10 @@ export const deleteMeditationSession = (id) => {
 
 
 
+
   // FOCUS FETCHES
 
-// called when a work timer completes on the focus component, updating a User's total time focused
+// called when a work timer completes on the Focus component, updating a User's total time focused
 export const updateUserTimeFocused = (userId, focusDuration) => {
   fetch(`${baseURL}users/${userId}`, {
     method: "PATCH",
@@ -82,7 +84,7 @@ export const updateUserTimeFocused = (userId, focusDuration) => {
   })
 }
 
-// called when a user "saves" a completed meditation session, posting that session to the back-end under the logged-in user
+// called when a user "saves" a completed Focus session, posting that session to the back-end under the logged-in user
 export const postFocusSession = (focusSessionObj, token) => {
   fetch(`${baseURL}focus_sessions`, {
     method: "POST",
@@ -94,3 +96,9 @@ export const postFocusSession = (focusSessionObj, token) => {
   })
 }
 
+// deletes a Focus Session on button click
+export const deleteFocusSession = (id) => {
+  fetch(`${baseURL}focus_sessions/${id}`, {
+    method: "DELETE"
+  })
+}
