@@ -27,6 +27,7 @@ const Meditate = props => {
 
 
 
+
   // set interval for clock tick
   useEffect( () => {
     let interval = null;
@@ -35,6 +36,8 @@ const Meditate = props => {
     }
     return () => clearInterval(interval)
   })
+
+
 
 
   // Handler to increment/decrement timer based on button clicks
@@ -67,6 +70,8 @@ const Meditate = props => {
   }
 
 
+
+
   // either starts or pauses the countdown timer conditionally, based off of state
   const handleStartBtnClick = () => {
 
@@ -97,6 +102,8 @@ const Meditate = props => {
   }
 
 
+
+
   // resets timer and all component states back to initial form when start button was clicked
   const handleResetBtnClick = () => {
     if (isCounting) {
@@ -107,6 +114,8 @@ const Meditate = props => {
       setTimer(timerCopy)
     }
   }
+
+
 
 
   // timer decrementing function set to an interveral on "start"
@@ -126,6 +135,8 @@ const Meditate = props => {
       }
     }
   }
+
+
 
 
   // actions to take place when a timer is allowed to run its course all the way to zero
@@ -156,6 +167,8 @@ const Meditate = props => {
   }
 
 
+
+
   // sent down as a prop to the modal when a session finishes, to be called when the "save" button is hit. Fires off a fetch to the back-end to save the session to the currently logged-in user
   const saveMeditationSession = (note) => {
 
@@ -169,6 +182,8 @@ const Meditate = props => {
   }
 
 
+
+
   // conditional text for start/continue button
   const startBtnText = () => {
     if (timerIsActive) {
@@ -177,6 +192,8 @@ const Meditate = props => {
       return "Start ►"
     }
   }
+
+
 
 
 

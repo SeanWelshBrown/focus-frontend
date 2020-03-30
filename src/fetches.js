@@ -102,3 +102,16 @@ export const deleteFocusSession = (id) => {
     method: "DELETE"
   })
 }
+
+
+
+
+  // HOME PAGE FETCHES
+
+// retrieves inspirational Quote of The Day from QuotesAPI
+export const getQuoteOfTheDay = () => {
+  return (
+    fetch("https://quotes.rest/qod?category=inspire&language=en")
+    .then( r => r.json() )
+  )
+}
