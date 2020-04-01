@@ -17,6 +17,9 @@ const About = props => {
 
       <h4>This application was built using <a href="https://reactjs.org/" target="_blank" rel="noopener noreferrer">React</a>, <a href="https://redux.js.org/" target="_blank" rel="noopener noreferrer">Redux</a> and <a href="https://rubyonrails.org/" target="_blank" rel="noopener noreferrer">Ruby on Rails</a>.</h4>
 
+      <h5>Weather powered by <a href="https://darksky.net/dev" title="Powered by Dark Sky API" target="_blank" rel="noopener noreferrer">Dark Sky API</a></h5>
+      <h5>Quote of the Day powered by <a href="https://theysaidso.com" title="Powered by quotes from theysaidso.com" target="_blank" rel="noopener noreferrer">They Said So®</a></h5>
+
     </div>
   )
 

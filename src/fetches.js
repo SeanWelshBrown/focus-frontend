@@ -108,6 +108,14 @@ export const deleteFocusSession = (id) => {
 
   // HOME PAGE FETCHES
 
+// retrieves weather information from Dark Sky API
+export const getWeather = (latitude, longitude) => {
+  return (
+    fetch(`${baseURL}weather?latitude=${latitude}&longitude=${longitude}`)
+    .then( r => r.json() )
+  )
+}
+
 // retrieves inspirational Quote of The Day from QuotesAPI
 export const getQuoteOfTheDay = () => {
   return (

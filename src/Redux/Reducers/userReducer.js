@@ -8,6 +8,10 @@ let initialState = {
   },
   meditationSessions: [],
   focusSessions: [],
+  location: {
+    userLatitude: "",
+    uerLongitude: ""
+  },
   token: ""
 }
 
@@ -37,6 +41,15 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         focusSessions: state.focusSessions.filter( session => session.id !== action.payload )
+      }
+
+    case "SET_LOCATION":
+      return {
+        ...state,
+        location: {
+          userLatitude: action.payload.latitude,
+          userLongitude: action.payload.longitude
+        }
       }
 
     default:

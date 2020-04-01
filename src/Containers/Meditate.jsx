@@ -196,6 +196,12 @@ const Meditate = props => {
 
 
 
+    // message to be displayed by prompt when attempting to leave page while session is active
+    const promptMessage = "You are currently in the middle of a meditation session. \n\nIf you leave the current page, this session will be lost unless saved. \n \nClick 'Cancel' to resume your current session, or 'OK' to leave the page and reset progress."
+
+
+
+
 
   // RENDER
   return (
@@ -203,7 +209,7 @@ const Meditate = props => {
 
       <Prompt 
         when={timerIsActive}
-        message="Timer is currently active, are you sure you want to leave?"
+        message={promptMessage}
       />
       
       <MeditateModal
