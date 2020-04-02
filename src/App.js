@@ -36,7 +36,7 @@ const App = (props) => {
             payload: userData
           })
         } else {
-          localStorage.clear()
+          localStorage.token.clear()
         }
       })
     }
