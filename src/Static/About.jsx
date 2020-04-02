@@ -7,7 +7,7 @@ const About = props => {
 
       <h2>⚘ &nbsp;a b o u t&nbsp; ⚘</h2>
 
-      <p><strong>FOCUS</strong> is an application designed to bridge the gap between our productivity and our mental wellbeing, using responsive web development to create something that is inviting, organic, and easy to use.</p>
+      <p><strong>FOCUS</strong> is a desktop web application designed to bridge the gap between our productivity and our mental wellbeing, using responsive web development to create something that is inviting, organic, and easy to use.</p>
 
       <p>A <strong>Meditation</strong> timer allows us to turn our concentration <em>inward</em>, taking the time to concentrate on our breath and on slowing down our minds and their racing thoughts.</p>
 

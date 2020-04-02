@@ -5,10 +5,12 @@ import { Prompt } from 'react-router-dom';
 import MeditateModal from '../Components/MeditateModal';
 import { updateUserTimeMeditated, postMeditationSession } from '../fetches';
 
+import alarm_zen from './alarm_zen.mp3'
+
 const Meditate = props => {
 
   // STATE/GLOBALS
-  const [timer, setTimer] = useState({ hours: 0, minutes: 10, seconds: 0 })
+  const [timer, setTimer] = useState({ hours: 0, minutes: 0, seconds: 2 })
   const [timerCopy, setTimerCopy] = useState({})
 
   const [isCounting, setIsCounting] = useState(false)
@@ -19,11 +21,15 @@ const Meditate = props => {
 
   const [showModal, setShowModal] = useState(false)
   
-
+  
   const { hours, minutes, seconds } = timer
 
   // REDUX
   const user = useSelector( state => state.user )
+
+  // AUDIO
+  const meditate_alarm = new Audio(alarm_zen)
+  meditate_alarm.loop = true
 
 
 
@@ -164,6 +170,19 @@ const Meditate = props => {
     }
 
     setTimerInfo({ ...timerInfo, duration: 0, startTime: "" })
+
+    playAlarm()
+
+  }
+
+  // plays alarm sound and renders alert() until user clicks OK
+  const playAlarm = () => {
+
+    meditate_alarm.play()
+    alert("Meditation Session complete. \n \n Click OK to end the alarm and continue.")
+    meditate_alarm.pause()
+    meditate_alarm.currentTime = 0
+
   }
 
 

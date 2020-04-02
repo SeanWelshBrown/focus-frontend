@@ -7,17 +7,20 @@ import { updateUserTimeFocused, postFocusSession } from '../fetches'
 
 import FocusModal from '../Components/FocusModal';
 
+import alarm_relaxing from './alarm_relaxing.mp3';
+import alarm_electropop from './alarm_electropop.mp3';
+
 
 const Focus = props => {
 
   // STATE
-  const [timer, setTimer] = useState({ hours: 0, minutes: 25, seconds: 0 })
+  const [timer, setTimer] = useState({ hours: 0, minutes: 0, seconds: 2 })
   const [timerCopy, setTimerCopy] = useState({})
   const [timerInfo, setTimerInfo] = useState({ duration: 0, startTime: "" })
   const [focusSession, setFocusSession] = useState({ start_time: "", end_time: "", duration: 0 })
 
   const [userWorkTimer, setUserWorkTimer] = useState({ hours: 0, minutes: 25, seconds: 0 })
-  const [userBreakTimer, setUserBreakTimer] = useState({ hours: 0, minutes: 5, seconds: 0 })
+  const [userBreakTimer, setUserBreakTimer] = useState({ hours: 0, minutes: 0, seconds: 2 })
   const [userBigBreakTimer, setUserBigBreakTimer] = useState({ hours: 0, minutes: 15, seconds: 0 })
 
   const [workChunks, setWorkChunks] = useState("")
@@ -38,6 +41,12 @@ const Focus = props => {
   
   // REDUX
   const user = useSelector( state => state.user )
+
+  // AUDIO
+  const work_alarm = new Audio(alarm_electropop)
+  work_alarm.loop = true
+  const break_alarm = new Audio(alarm_relaxing)
+  break_alarm.loop = true
 
 
 
@@ -221,8 +230,10 @@ const Focus = props => {
 
       // resets timerInfo
     setTimerInfo({ duration: 0, startTime: "" })
-  }
 
+    playAlarm("Work")
+
+  }
 
 
 
@@ -259,6 +270,31 @@ const Focus = props => {
 
       // resets timerInfo
     setTimerInfo({ duration: 0, startTime: "" })
+
+    playAlarm("Break")
+
+  }
+
+
+
+  // plays alarm sound and renders conditional alert() until user clicks OK
+  const playAlarm = (context) => {
+    switch (context) {
+      case "Work":
+        work_alarm.play()
+        alert(`${context} Session finished. Great job!\n \n Click OK to end the alarm and continue.`)
+        work_alarm.pause()
+        work_alarm.currentTime = 0
+        break;
+      case "Break":
+        break_alarm.play()
+        alert(`${context} Session finished. Let's roll!\n \n Click OK to end the alarm and continue.`)
+        break_alarm.pause()
+        break_alarm.currentTime = 0
+        break;
+      default:
+        return null
+    }
   }
 
 

@@ -623,7 +623,7 @@ input::placeholder {
 .tally {
   margin: 0em;
   margin-bottom: 1rem;
-  line-height: 1;
+  line-height: 20px;
   font-size: 3rem;
   color: #2A599D;
 }

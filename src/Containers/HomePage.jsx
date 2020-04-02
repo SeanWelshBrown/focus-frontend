@@ -103,7 +103,7 @@ const HomePage = props => {
 
 
   
-  // renders conditional geolocation message to User
+  // renders conditional geolocation message to User depending on if they have allowed location services or not
   const renderGeolocationMsg = () => {
     if (!!error) {
 
