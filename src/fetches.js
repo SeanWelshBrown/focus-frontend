@@ -1,4 +1,4 @@
-const baseURL = "http://localhost:4000/";
+const baseURL = "https://focus-app-backend.herokuapp.com/";
 
 
   // AUTH FETCHES
