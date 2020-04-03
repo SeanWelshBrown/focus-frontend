@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { deleteMeditationSession, deleteFocusSession } from '../fetches'
-import NoteModal from './NoteModal';
+import NoteModal from './SavedNoteModal';
 
 
 const SessionCard = props => {

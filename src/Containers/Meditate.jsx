@@ -3,9 +3,13 @@ import { useSelector } from 'react-redux';
 import { Prompt } from 'react-router-dom';
 
 import MeditateModal from '../Components/MeditateModal';
+import HowToModal from '../Components/HowToModal';
+
 import { updateUserTimeMeditated, postMeditationSession } from '../fetches';
 
 import alarm_zen from './alarm_zen.mp3'
+
+
 
 const Meditate = props => {
 
@@ -20,6 +24,7 @@ const Meditate = props => {
   const [meditationSession, setMeditationSession] = useState({ start_time: "", end_time: "", duration: 0 })
 
   const [showModal, setShowModal] = useState(false)
+  const [showHowToModal, setShowHowToModal] = useState(false)
   
   
   const { hours, minutes, seconds } = timer
@@ -215,8 +220,18 @@ const Meditate = props => {
 
 
 
-    // message to be displayed by prompt when attempting to leave page while session is active
-    const promptMessage = "You are currently in the middle of a meditation session. \n\nIf you leave the current page, this session will be lost unless saved. \n \nClick 'Cancel' to resume your current session, or 'OK' to leave the page and reset progress."
+  // message to be displayed by prompt when attempting to leave page while session is active
+  const promptMessage = "You are currently in the middle of a meditation session. \n\nIf you leave the current page, this session will be lost unless saved. \n \nClick 'Cancel' to resume your current session, or 'OK' to leave the page and reset progress."
+
+
+
+
+    // sets How To Modal show state to true on click
+    const handleHowToClick = () => {
+
+      setShowHowToModal(true)
+
+    }
 
 
 
@@ -231,6 +246,12 @@ const Meditate = props => {
         message={promptMessage}
       />
       
+      <HowToModal 
+        show={showHowToModal}
+        onHide={() => setShowHowToModal(false)}
+        context="meditation"
+      />
+
       <MeditateModal
         show={showModal}
         onHide={() => setShowModal(false)}
@@ -241,6 +262,8 @@ const Meditate = props => {
       <h2 className="meditate-header">⤢ <em>m e d i t a t e</em> ⤡</h2>
 
       <p className="meditate-timer-msg">( set a timer for your session and let your mind begin to settle <span role="img" aria-label="praying">🍃</span> )</p>
+
+      <p className="how-to-link meditate" onClick={handleHowToClick}>(How do I do this?)</p>
 
       <h1 className="meditation-timer">
         { hours > 0 ? `${hours}:` : "" }{ hours > 0 && minutes < 10 ? `0${minutes}` : minutes }:{ seconds < 10 ? `0${seconds}` : seconds }

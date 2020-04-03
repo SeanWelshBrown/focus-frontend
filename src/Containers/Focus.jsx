@@ -6,6 +6,7 @@ import TallyMarks from '../Components/TallyMarks';
 import { updateUserTimeFocused, postFocusSession } from '../fetches'
 
 import FocusModal from '../Components/FocusModal';
+import HowToModal from '../Components/HowToModal';
 
 import alarm_relaxing from './alarm_relaxing.mp3';
 import alarm_electropop from './alarm_electropop.mp3';
@@ -35,6 +36,8 @@ const Focus = props => {
 
   const [showSaveModal, setShowSaveModal] = useState(false)
   const [modalContext, setModalContext] = useState("")
+
+  const [showHowToModal, setShowHowToModal] = useState(false)
 
   
   const { hours, minutes, seconds } = timer
@@ -393,6 +396,17 @@ const Focus = props => {
 
 
 
+  // sets How To Modal show state to true on click
+  const handleHowToClick = () => {
+
+    setShowHowToModal(true)
+
+  }
+  
+
+
+
+
   
   // RENDER
   return (
@@ -401,6 +415,12 @@ const Focus = props => {
       <Prompt 
         when={sessionIsActive}
         message={promptMessage}
+      />
+
+      <HowToModal 
+        show={showHowToModal}
+        onHide={() => setShowHowToModal(false)}
+        context="focus"
       />
 
       <FocusModal 
@@ -415,6 +435,8 @@ const Focus = props => {
       {isWorking ? <h2 className="focus-header work">→ <em>f o c u s</em> ←</h2> : <h2 className="focus-header break">← <em>r e l a x</em> →</h2>}
 
       {renderTimerMessage()}
+
+      <p className="how-to-link focus" onClick={handleHowToClick}>(How do I do this?)</p>
 
       <h1 className={isWorking ? "focus-timer work" : "focus-timer break"}>
         { hours > 0 ? `${hours}:` : "" }{ hours > 0 && minutes < 10 ? `0${minutes}` : minutes }:{ seconds < 10 ? `0${seconds}` : seconds }

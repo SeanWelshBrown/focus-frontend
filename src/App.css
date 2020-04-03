@@ -53,6 +53,7 @@ input {
 }
 
 
+
 /* BOOTSTRAP MODALS */
 .modal-open {
   overflow: hidden;
@@ -297,6 +298,32 @@ textarea::placeholder {
 input::placeholder {
   text-align: center;
 }
+
+
+
+/* How-To Modal */
+.how-to-link {
+  display: inline-block;
+  text-decoration: underline;
+  font-size: .9rem;
+  margin-top: 0;
+  cursor: pointer;
+}
+.how-to-link.focus {
+  color: #751f41ec;
+}
+.how-to-link:hover {
+  transform: scale(1.03);
+  transition: all .2s ease-in-out;
+}
+
+.how-to-ol {
+  text-align: left;
+}
+.how-to-ol li {
+  padding-bottom: 10px;
+}
+
 
 
 /* React Transition animations */
@@ -580,7 +607,7 @@ input::placeholder {
   font-size: 1rem;
 }
 .focus-timer-msg.work {
-  color: #964c69da;
+  color: #964c6ac2;
 }
 .focus-timer-msg.break {
   color: #336f75d3;
