@@ -9,7 +9,7 @@ import FocusModal from '../Components/FocusModal';
 import HowToModal from '../Components/HowToModal';
 
 import alarm_relaxing from './alarm_relaxing.mp3';
-import alarm_electropop from './alarm_electropop.mp3';
+// import alarm_electropop from './alarm_electropop.mp3';
 
 
 const Focus = props => {
@@ -46,7 +46,7 @@ const Focus = props => {
   const user = useSelector( state => state.user )
 
   // AUDIO
-  const work_alarm = new Audio(alarm_electropop)
+  const work_alarm = new Audio(alarm_relaxing)
   work_alarm.loop = true
   const break_alarm = new Audio(alarm_relaxing)
   break_alarm.loop = true
@@ -436,7 +436,7 @@ const Focus = props => {
 
       {renderTimerMessage()}
 
-      <p className="how-to-link focus" onClick={handleHowToClick}>(How do I do this?)</p>
+      <p className="how-to-link focus" onClick={handleHowToClick}>(How does this work?)</p>
 
       <h1 className={isWorking ? "focus-timer work" : "focus-timer break"}>
         { hours > 0 ? `${hours}:` : "" }{ hours > 0 && minutes < 10 ? `0${minutes}` : minutes }:{ seconds < 10 ? `0${seconds}` : seconds }

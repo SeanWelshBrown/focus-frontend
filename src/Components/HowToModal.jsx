@@ -68,9 +68,9 @@ const HowToModal = props => {
             <li><strong>Decide on the task</strong> to be done.</li>
             <li><strong>Set the Work timer</strong> (traditionally to 25 minutes).</li>
             <li><strong>Work</strong> on the task.</li>
-            <li><strong>End work when the timer rings</strong> and put a tally on a piece of paper (we'll do that for you here in the app).</li>
+            <li><strong>End work when the timer rings</strong> and put down a checkmark somewhere (we'll do that for you here in the app).</li>
             <li><strong>If you have fewer than four checkmarks, take a short break</strong> (3–5 minutes), then return to step 2.</li>
-            <li><strong>After four Work sessions, take a longer break</strong> (15–30 minutes), reset your tally count to zero, then go to step 1.</li>
+            <li><strong>After four Work sessions, take a longer break</strong> (15–30 minutes), reset your checkmarks to zero, then go to step 1.</li>
           </ol>
 
           <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique" target="_blank" rel="noopener noreferrer">(Visit Wikipedia.org for more information)</a>

@@ -14,7 +14,7 @@ import alarm_zen from './alarm_zen.mp3'
 const Meditate = props => {
 
   // STATE/GLOBALS
-  const [timer, setTimer] = useState({ hours: 0, minutes: 0, seconds: 2 })
+  const [timer, setTimer] = useState({ hours: 0, minutes: 10, seconds: 0 })
   const [timerCopy, setTimerCopy] = useState({})
 
   const [isCounting, setIsCounting] = useState(false)
@@ -263,7 +263,7 @@ const Meditate = props => {
 
       <p className="meditate-timer-msg">( set a timer for your session and let your mind begin to settle <span role="img" aria-label="praying">🍃</span> )</p>
 
-      <p className="how-to-link meditate" onClick={handleHowToClick}>(How do I do this?)</p>
+      {/* <p className="how-to-link meditate" onClick={handleHowToClick}>(How do I do this?)</p> */}
 
       <h1 className="meditation-timer">
         { hours > 0 ? `${hours}:` : "" }{ hours > 0 && minutes < 10 ? `0${minutes}` : minutes }:{ seconds < 10 ? `0${seconds}` : seconds }
