@@ -4,6 +4,7 @@ import { Prompt } from 'react-router-dom';
 
 import MeditateModal from '../Components/MeditateModal';
 import HowToModal from '../Components/HowToModal';
+import AlarmModal from '../Components/AlarmModal';
 
 import { updateUserTimeMeditated, postMeditationSession } from '../fetches';
 
@@ -28,8 +29,9 @@ const Meditate = props => {
   const [timerInfo, setTimerInfo] = useState({ duration: 0, startTime: "" })
   const [meditationSession, setMeditationSession] = useState({ start_time: "", end_time: "", duration: 0 })
 
-  const [showModal, setShowModal] = useState(false)
+  const [showSaveModal, setShowSaveModal] = useState(false)
   const [showHowToModal, setShowHowToModal] = useState(false)
+  const [showAlarmModal, setShowAlarmModal] = useState(false)
 
   const [timeKeeper] = useState(new WebWorker(timekeeperInterval))
   const [meditateAlarm] = useState(new Audio(alarm_zen))
@@ -175,7 +177,7 @@ const Meditate = props => {
       duration: timerInfo.duration,
     })
 
-    setShowModal(!showModal)
+    // setShowSaveModal(!showSaveModal)
 
     if (user.id > 0) {
       updateUserTimeMeditated(user.id, timerInfo.duration)
@@ -191,9 +193,10 @@ const Meditate = props => {
   const playAlarm = () => {
 
     meditateAlarm.play()
-    alert("Meditation Session complete. \n \n Click OK to end the alarm and continue.")
-    meditateAlarm.pause()
-    meditateAlarm.currentTime = 0
+    // alert("Meditation Session complete. \n \n Click OK to end the alarm and continue.")
+    setShowAlarmModal(true)
+    // meditateAlarm.pause()
+    // meditateAlarm.currentTime = 0
 
   }
 
@@ -259,9 +262,19 @@ const Meditate = props => {
         context="meditation"
       />
 
+      <AlarmModal 
+        show={showAlarmModal}
+        onHide={() => {
+          setShowAlarmModal(false)
+          setShowSaveModal(!showSaveModal)
+          meditateAlarm.pause()
+          meditateAlarm.currentTime = 0
+        }}
+      />
+      
       <MeditateModal
-        show={showModal}
-        onHide={() => setShowModal(false)}
+        show={showSaveModal}
+        onHide={() => setShowSaveModal(false)}
         user={user}
         saveMeditationSession={saveMeditationSession}
       />

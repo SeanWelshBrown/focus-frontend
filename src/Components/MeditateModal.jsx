@@ -33,7 +33,7 @@ const MeditateModal = props => {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4>Save this session?</h4>
+            <h3>Save this session?</h3>
             <p>(add an optional note on your experience below, click save, or click away to embrace impermanence.)</p>
             <textarea
               rows="6"

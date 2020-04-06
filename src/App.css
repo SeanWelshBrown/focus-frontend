@@ -181,8 +181,12 @@ input {
   z-index: 1040;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(9, 74, 117, 0.555);
+  background-color: rgba(9, 74, 117, 0.658);
 }
+
+/* .modal.alarm {
+  background-color: rgba(9, 74, 117, 0.692);
+} */
 
 .modal-backdrop.fade {
   opacity: 0;

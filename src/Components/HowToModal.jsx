@@ -73,7 +73,10 @@ const HowToModal = props => {
             <li><strong>After four Work sessions, take a longer break</strong> (15–30 minutes), reset your checkmarks to zero, then go to step 1.</li>
           </ol>
 
+          <p><strong>NOTE: </strong>In this app you may also finish and save a session early by using the manual "Save Session" button that appears after at least one full work timer is complete.</p>
+
           <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique" target="_blank" rel="noopener noreferrer">(Visit Wikipedia.org for more information)</a>
+
         </>
 
       )

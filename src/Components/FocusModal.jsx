@@ -59,7 +59,7 @@ const FocusModal = props => {
 
               <h4>You've completed a full Focus Session!</h4>
 
-              <p>You can continue working and extend this session (you may save it later.)</p>
+              <p>You can continue working and extend this session (and save it later.)</p>
               <p>Or, you can save this finished session to your account with some additional info:</p>
 
               <label className="modal-label" htmlFor="focusType">Focus type (optional):</label>
@@ -86,8 +86,8 @@ const FocusModal = props => {
 
             </Modal.Body>
             <Modal.Footer>
-              <button onClick={initialSaveBtnClick}>Save and Reset</button>
               <button onClick={props.onHide}>Close and Continue</button>
+              <button onClick={initialSaveBtnClick}>Save and Reset</button>
             </Modal.Footer>
           </Modal>
         );
@@ -138,8 +138,8 @@ const FocusModal = props => {
 
             </Modal.Body>
             <Modal.Footer>
-              <button onClick={initialSaveBtnClick}>Save and Reset</button>
               <button onClick={props.onHide}>Close and Continue</button>
+              <button onClick={initialSaveBtnClick}>Save and Reset</button>
             </Modal.Footer>
           </Modal>
         );
