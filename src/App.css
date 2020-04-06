@@ -309,8 +309,11 @@ input::placeholder {
   margin-top: 0;
   cursor: pointer;
 }
-.how-to-link.focus {
+.how-to-link.work {
   color: #751f41ec;
+}
+.how-to-link.break {
+  color: #1f6c75e5;
 }
 .how-to-link:hover {
   transform: scale(1.03);

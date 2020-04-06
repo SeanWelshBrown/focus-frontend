@@ -7,6 +7,9 @@ import HowToModal from '../Components/HowToModal';
 
 import { updateUserTimeMeditated, postMeditationSession } from '../fetches';
 
+import timekeeperInterval from '../WebWorkers/timekeeper.js';
+import WebWorker from '../WebWorkers/WebWorker';
+
 import alarm_zen from './alarm_zen.mp3'
 
 
@@ -14,8 +17,10 @@ import alarm_zen from './alarm_zen.mp3'
 const Meditate = props => {
 
   // STATE/GLOBALS
-  const [timer, setTimer] = useState({ hours: 0, minutes: 10, seconds: 0 })
+  const [timer, setTimer] = useState({ hours: 0, minutes: 0, seconds: 2 })
   const [timerCopy, setTimerCopy] = useState({})
+  
+  const { hours, minutes, seconds } = timer
 
   const [isCounting, setIsCounting] = useState(false)
   const [timerIsActive, setTimerIsActive] = useState(false)
@@ -25,28 +30,30 @@ const Meditate = props => {
 
   const [showModal, setShowModal] = useState(false)
   const [showHowToModal, setShowHowToModal] = useState(false)
+
+  const [timeKeeper] = useState(new WebWorker(timekeeperInterval))
+  const [meditateAlarm] = useState(new Audio(alarm_zen))
   
-  
-  const { hours, minutes, seconds } = timer
 
   // REDUX
   const user = useSelector( state => state.user )
 
-  // AUDIO
-  const meditate_alarm = new Audio(alarm_zen)
-  meditate_alarm.loop = true
 
 
 
 
-  // set interval for clock tick
+  // handles decrementing the timer by sending messages to timekeeper WebWorker, setting and clearing an interval to "tick" every second and 'ping' the countDownTimer() function
+  timeKeeper.onmessage = () => {
+    countDownTimer()
+  }
   useEffect( () => {
-    let interval = null;
     if (isCounting) {
-      interval = setInterval(countDownTimer, 1000)
+      timeKeeper.postMessage("start")
     }
-    return () => clearInterval(interval)
-  })
+    if (!isCounting) {
+      timeKeeper.postMessage("stop")
+    }
+  }, [isCounting, timeKeeper])
 
 
 
@@ -89,7 +96,7 @@ const Meditate = props => {
     if (isCounting === false && timerIsActive === false) {
       
       const today = new Date();
-      const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+      const date = today.getFullYear()+'/'+(today.getMonth()+1)+'/'+today.getDate();
       const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
       const startTime = date+' '+time;
       
@@ -183,10 +190,10 @@ const Meditate = props => {
   // plays alarm sound and renders alert() until user clicks OK
   const playAlarm = () => {
 
-    meditate_alarm.play()
+    meditateAlarm.play()
     alert("Meditation Session complete. \n \n Click OK to end the alarm and continue.")
-    meditate_alarm.pause()
-    meditate_alarm.currentTime = 0
+    meditateAlarm.pause()
+    meditateAlarm.currentTime = 0
 
   }
 
@@ -263,7 +270,7 @@ const Meditate = props => {
 
       <p className="meditate-timer-msg">( set a timer for your session and let your mind begin to settle <span role="img" aria-label="praying">🍃</span> )</p>
 
-      {/* <p className="how-to-link meditate" onClick={handleHowToClick}>(How do I do this?)</p> */}
+      <p className="how-to-link meditate" onClick={handleHowToClick}>(How do I do this?)</p>
 
       <h1 className="meditation-timer">
         { hours > 0 ? `${hours}:` : "" }{ hours > 0 && minutes < 10 ? `0${minutes}` : minutes }:{ seconds < 10 ? `0${seconds}` : seconds }

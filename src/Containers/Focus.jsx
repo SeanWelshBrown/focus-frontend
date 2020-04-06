@@ -8,6 +8,9 @@ import { updateUserTimeFocused, postFocusSession } from '../fetches'
 import FocusModal from '../Components/FocusModal';
 import HowToModal from '../Components/HowToModal';
 
+import timekeeperInterval from '../WebWorkers/timekeeper.js';
+import WebWorker from '../WebWorkers/WebWorker';
+
 import alarm_relaxing from './alarm_relaxing.mp3';
 // import alarm_electropop from './alarm_electropop.mp3';
 
@@ -20,6 +23,8 @@ const Focus = props => {
   const [timerInfo, setTimerInfo] = useState({ duration: 0, startTime: "" })
   const [focusSession, setFocusSession] = useState({ start_time: "", end_time: "", duration: 0 })
 
+  const { hours, minutes, seconds } = timer
+  
   const [userWorkTimer, setUserWorkTimer] = useState({ hours: 0, minutes: 25, seconds: 0 })
   const [userBreakTimer, setUserBreakTimer] = useState({ hours: 0, minutes: 0, seconds: 2 })
   const [userBigBreakTimer, setUserBigBreakTimer] = useState({ hours: 0, minutes: 15, seconds: 0 })
@@ -36,34 +41,32 @@ const Focus = props => {
 
   const [showSaveModal, setShowSaveModal] = useState(false)
   const [modalContext, setModalContext] = useState("")
-
   const [showHowToModal, setShowHowToModal] = useState(false)
 
-  
-  const { hours, minutes, seconds } = timer
+  const [timeKeeper] = useState(new WebWorker(timekeeperInterval))
+  const [workAlarm] = useState(new Audio(alarm_relaxing))
+  const [breakAlarm] = useState(new Audio(alarm_relaxing))
+
   
   // REDUX
   const user = useSelector( state => state.user )
 
-  // AUDIO
-  const work_alarm = new Audio(alarm_relaxing)
-  work_alarm.loop = true
-  const break_alarm = new Audio(alarm_relaxing)
-  break_alarm.loop = true
 
 
 
 
-  // set interval for clock tick
+  // handles decrementing the timer by sending messages to timekeeper WebWorker, setting and clearing an interval to "tick" every second and 'ping' the countDownTimer() function
+  timeKeeper.onmessage = () => {
+    countDownTimer()
+  }
   useEffect( () => {
-    let interval = null;
     if (isCounting) {
-      interval = setInterval(countDownTimer, 1000)
+      timeKeeper.postMessage("start")
     }
-    return () => (
-      clearInterval(interval)
-    )
-  })
+    if (!isCounting) {
+      timeKeeper.postMessage("stop")
+    }
+  }, [isCounting, timeKeeper])
 
 
 
@@ -110,7 +113,7 @@ const Focus = props => {
       }
       
       const today = new Date();
-      const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+      const date = today.getFullYear()+'/'+(today.getMonth()+1)+'/'+today.getDate();
       const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
       const startTime = date+' '+time;
       
@@ -284,16 +287,16 @@ const Focus = props => {
   const playAlarm = (context) => {
     switch (context) {
       case "Work":
-        work_alarm.play()
+        workAlarm.play()
         alert(`${context} Session finished. Great job!\n \n Click OK to end the alarm and continue.`)
-        work_alarm.pause()
-        work_alarm.currentTime = 0
+        workAlarm.pause()
+        workAlarm.currentTime = 0
         break;
       case "Break":
-        break_alarm.play()
+        breakAlarm.play()
         alert(`${context} Session finished. Let's roll!\n \n Click OK to end the alarm and continue.`)
-        break_alarm.pause()
-        break_alarm.currentTime = 0
+        breakAlarm.pause()
+        breakAlarm.currentTime = 0
         break;
       default:
         return null
@@ -436,7 +439,7 @@ const Focus = props => {
 
       {renderTimerMessage()}
 
-      <p className="how-to-link focus" onClick={handleHowToClick}>(How does this work?)</p>
+      <p className={isWorking? "how-to-link work" : "how-to-link break"} onClick={handleHowToClick}>(How does this work?)</p>
 
       <h1 className={isWorking ? "focus-timer work" : "focus-timer break"}>
         { hours > 0 ? `${hours}:` : "" }{ hours > 0 && minutes < 10 ? `0${minutes}` : minutes }:{ seconds < 10 ? `0${seconds}` : seconds }
