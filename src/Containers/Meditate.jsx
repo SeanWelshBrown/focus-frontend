@@ -18,7 +18,7 @@ import alarm_zen from './alarm_zen.mp3'
 const Meditate = props => {
 
   // STATE/GLOBALS
-  const [timer, setTimer] = useState({ hours: 0, minutes: 0, seconds: 2 })
+  const [timer, setTimer] = useState({ hours: 0, minutes: 10, seconds: 0 })
   const [timerCopy, setTimerCopy] = useState({})
   
   const { hours, minutes, seconds } = timer

@@ -21,7 +21,7 @@ const AlarmModal = props => {
       </Modal.Header>
       <Modal.Body>
         {/* <h3>Session complete!</h3> */}
-        <p>Click to end the alarm and continue.</p>
+        <h3>Click to end the alarm and continue.</h3>
       </Modal.Body>
       <Modal.Footer>
         <button onClick={props.onHide}>End Alarm</button>
