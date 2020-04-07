@@ -13,13 +13,12 @@ import timekeeperInterval from '../WebWorkers/timekeeper.js';
 import WebWorker from '../WebWorkers/WebWorker';
 
 import alarm_relaxing from './alarm_relaxing.mp3';
-// import alarm_electropop from './alarm_electropop.mp3';
 
 
 const Focus = props => {
 
   // STATE
-  const [timer, setTimer] = useState({ hours: 0, minutes: 0, seconds: 1 })
+  const [timer, setTimer] = useState({ hours: 0, minutes: 25, seconds: 0 })
   const [timerCopy, setTimerCopy] = useState({})
   const [timerInfo, setTimerInfo] = useState({ duration: 0, startTime: "" })
   const [focusSession, setFocusSession] = useState({ start_time: "", end_time: "", duration: 0 })
@@ -27,7 +26,7 @@ const Focus = props => {
   const { hours, minutes, seconds } = timer
   
   const [userWorkTimer, setUserWorkTimer] = useState({ hours: 0, minutes: 25, seconds: 0 })
-  const [userBreakTimer, setUserBreakTimer] = useState({ hours: 0, minutes: 0, seconds: 1 })
+  const [userBreakTimer, setUserBreakTimer] = useState({ hours: 0, minutes: 5, seconds: 0 })
   const [userBigBreakTimer, setUserBigBreakTimer] = useState({ hours: 0, minutes: 15, seconds: 0 })
 
   const [workChunks, setWorkChunks] = useState("")
