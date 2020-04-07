@@ -7,18 +7,18 @@ import { updateUserTimeFocused, postFocusSession } from '../fetches'
 
 import FocusModal from '../Components/FocusModal';
 import HowToModal from '../Components/HowToModal';
+import AlarmModal from '../Components/AlarmModal';
 
 import timekeeperInterval from '../WebWorkers/timekeeper.js';
 import WebWorker from '../WebWorkers/WebWorker';
 
 import alarm_relaxing from './alarm_relaxing.mp3';
-// import alarm_electropop from './alarm_electropop.mp3';
 
 
 const Focus = props => {
 
   // STATE
-  const [timer, setTimer] = useState({ hours: 0, minutes: 0, seconds: 2 })
+  const [timer, setTimer] = useState({ hours: 0, minutes: 25, seconds: 0 })
   const [timerCopy, setTimerCopy] = useState({})
   const [timerInfo, setTimerInfo] = useState({ duration: 0, startTime: "" })
   const [focusSession, setFocusSession] = useState({ start_time: "", end_time: "", duration: 0 })
@@ -26,7 +26,7 @@ const Focus = props => {
   const { hours, minutes, seconds } = timer
   
   const [userWorkTimer, setUserWorkTimer] = useState({ hours: 0, minutes: 25, seconds: 0 })
-  const [userBreakTimer, setUserBreakTimer] = useState({ hours: 0, minutes: 0, seconds: 2 })
+  const [userBreakTimer, setUserBreakTimer] = useState({ hours: 0, minutes: 5, seconds: 0 })
   const [userBigBreakTimer, setUserBigBreakTimer] = useState({ hours: 0, minutes: 15, seconds: 0 })
 
   const [workChunks, setWorkChunks] = useState("")
@@ -42,10 +42,10 @@ const Focus = props => {
   const [showSaveModal, setShowSaveModal] = useState(false)
   const [modalContext, setModalContext] = useState("")
   const [showHowToModal, setShowHowToModal] = useState(false)
+  const [showAlarmModal, setShowAlarmModal] = useState(false)
 
   const [timeKeeper] = useState(new WebWorker(timekeeperInterval))
-  const [workAlarm] = useState(new Audio(alarm_relaxing))
-  const [breakAlarm] = useState(new Audio(alarm_relaxing))
+  const [focusAlarm] = useState(new Audio(alarm_relaxing))
 
   
   // REDUX
@@ -223,7 +223,7 @@ const Focus = props => {
         duration: focusSession.duration + timerInfo.duration
       })
       setModalContext("auto save")
-      setShowSaveModal(true)
+      // setShowSaveModal(true)
       
     }
 
@@ -287,16 +287,12 @@ const Focus = props => {
   const playAlarm = (context) => {
     switch (context) {
       case "Work":
-        workAlarm.play()
-        alert(`${context} Session finished. Great job!\n \n Click OK to end the alarm and continue.`)
-        workAlarm.pause()
-        workAlarm.currentTime = 0
+        focusAlarm.play()
+        setShowAlarmModal(true)
         break;
       case "Break":
-        breakAlarm.play()
-        alert(`${context} Session finished. Let's roll!\n \n Click OK to end the alarm and continue.`)
-        breakAlarm.pause()
-        breakAlarm.currentTime = 0
+        focusAlarm.play()
+        setShowAlarmModal(true)
         break;
       default:
         return null
@@ -424,6 +420,18 @@ const Focus = props => {
         show={showHowToModal}
         onHide={() => setShowHowToModal(false)}
         context="focus"
+      />
+
+      <AlarmModal 
+        show={showAlarmModal}
+        onHide={() => {
+          setShowAlarmModal(false)
+          focusAlarm.pause()
+          focusAlarm.currentTime = 0
+          if (workSessionTally === 4) {
+            setShowSaveModal(true)
+          }
+        }}
       />
 
       <FocusModal 

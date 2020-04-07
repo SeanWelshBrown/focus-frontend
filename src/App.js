@@ -58,7 +58,7 @@ const App = (props) => {
 
       <div className="main-wrapper">
 
-        <h1 className="header">FOCUS</h1>
+        <h1 className="logo">FOCUS</h1>
 
         <div className="content-container">
 

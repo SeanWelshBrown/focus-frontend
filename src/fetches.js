@@ -123,3 +123,21 @@ export const getQuoteOfTheDay = () => {
     .then( r => r.json() )
   )
 }
+
+
+
+
+  // PROFILE PAGE FETCHES
+
+// updates User Profile Picture URL
+export const updateProfilePic = (userId, profilePicUrl) => {
+  fetch(`${baseURL}users/${userId}`, {
+    method: "PATCH",
+    headers: {
+      "content-type": "application/json"
+    },
+    body: JSON.stringify({
+      profile_pic: profilePicUrl
+    })
+  })
+}
