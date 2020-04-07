@@ -505,14 +505,14 @@ input::placeholder {
   margin: 0;
   color: #e7f1fa;
   text-shadow: 
-  -2px -2px 1px #1f4275,
-  0   -2px 1px #1f4275,
-  2px -2px 1px #1f4275,
-  2px  0   1px #1f4275,
-  2px  2px 1px #1f4275,
-  0    2px 1px #1f4275,
-  -2px  2px 1px #1f4275,
-  -2px  0   1px #1f4275;
+  -2px -2px 1px #1f417581,
+  0   -2px 1px #1f417581,
+  2px -2px 1px #1f417581,
+  2px  0   1px #1f417581,
+  2px  2px 1px #1f417581,
+  0    2px 1px #1f417581,
+  -2px  2px 1px #1f417581,
+  -2px  0   1px #1f417581;
   /* -webkit-text-fill-color: rgba(198, 228, 255, 0.219);
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: #1f4175e0; */
