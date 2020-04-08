@@ -133,6 +133,8 @@ const HomePage = props => {
       <h5 className="home-quote-header">Quote of the Day:</h5>
       <p className="home-quote quote">{!!quoteOfTheDay ? quoteOfTheDay.contents.quotes[0].quote : null }</p>
       <p className="home-quote author">{!!quoteOfTheDay ? `- ${quoteOfTheDay.contents.quotes[0].author}` : null }</p>
+
+      <h6>Quote of the Day powered by <a href="https://theysaidso.com/quote-of-the-day/" title="Powered by quotes from theysaidso.com" target="_blank" rel="noopener noreferrer">They Said So®</a></h6>
       
     </div>
   )
