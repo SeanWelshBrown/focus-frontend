@@ -119,7 +119,7 @@ export const getWeather = (latitude, longitude) => {
 // retrieves inspirational Quote of The Day from QuotesAPI
 export const getQuoteOfTheDay = () => {
   return (
-    fetch("https://quotes.rest/qod?category=life&language=en")
+    fetch("https://quotes.rest/qod?category=inspire&language=en")
     .then( r => r.json() )
   )
 }
