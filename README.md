@@ -4,7 +4,7 @@ FOCUS is a desktop web application designed to bridge the gap between our produc
 
 A Meditation timer allows us to turn our concentration inward, taking the time to concentrate on our breath and on slowing down our minds and their racing thoughts.
 
-A Focus timer allows us to turn our concentration outward, using the popular Pomodoro Technique to healthfully heighten our productivity in work or study.
+A Focus timer allows us to turn our concentration outward, using the popular [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique) to healthfully heighten our productivity in work or study.
 
 ## Built With
 
