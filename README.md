@@ -17,7 +17,7 @@ A Focus timer allows us to turn our concentration outward, using the popular [Po
 
 ## Authors
 
-* **Sean Welsh Brown** - [GitHub](https://github.com/SeanWelshBrown)
+* **Sean Welsh Brown** - [GitHub](https://github.com/SeanWelshBrown) - [LinkedIn](https://www.linkedin.com/in/seanwelshbrown/)
 
 ## License
 
