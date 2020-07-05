@@ -6,6 +6,8 @@ A Meditation timer allows us to turn our concentration inward, taking the time t
 
 A Focus timer allows us to turn our concentration outward, using the popular [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique) to healthfully heighten our productivity in work or study.
 
+Users may also create an account to log in and save their Meditation and Focus sessions to a database, to see a history of past sessions or delete them at will.
+
 ## Built With
 
 * [ReactJS](https://reactjs.org/) - Front-End Framework
