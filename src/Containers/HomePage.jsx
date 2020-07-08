@@ -134,7 +134,7 @@ const HomePage = props => {
       <p className="home-quote quote">{!!quoteOfTheDay ? quoteOfTheDay.contents.quotes[0].quote : null }</p>
       <p className="home-quote author">{!!quoteOfTheDay ? `- ${quoteOfTheDay.contents.quotes[0].author}` : null }</p>
 
-      <h6>Quote of the Day powered by <a href="https://theysaidso.com/quote-of-the-day/" title="Powered by quotes from theysaidso.com" target="_blank" rel="noopener noreferrer">They Said So®</a></h6>
+      <h6>Randomized Quote of the Day powered by <a href="https://theysaidso.com/quote-of-the-day/" title="Powered by quotes from theysaidso.com" target="_blank" rel="noopener noreferrer">They Said So®</a></h6>
       
     </div>
   )
