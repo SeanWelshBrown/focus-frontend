@@ -20,7 +20,6 @@ const AlarmModal = props => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {/* <h3>Session complete!</h3> */}
         <h3>Click to end the alarm and continue.</h3>
       </Modal.Body>
       <Modal.Footer>
